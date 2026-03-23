@@ -35,7 +35,7 @@ export const Navbar = () => {
             Reviews
           </a>
           <a
-            href="/#services"
+            href="/services"
             className="font-heading font-bold tracking-tight text-xs uppercase text-muted-foreground hover:text-white transition-colors"
           >
             Services

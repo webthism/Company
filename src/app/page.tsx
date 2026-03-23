@@ -7,6 +7,7 @@ import { Testimonials } from "@/components/testimonials";
 import { Process } from "@/components/process";
 import { LeadMagnet } from "@/components/lead-magnet";
 import { Booking } from "@/components/booking";
+import { FAQAccordionBlock } from "@/components/ui/faq-accordion-block-shadcnui";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { Popup } from "@/components/popup";
@@ -30,6 +31,7 @@ export default function Home() {
           <Booking />
         </div>
       </section>
+      <FAQAccordionBlock />
       <Contact />
       <Footer />
       <Popup />
