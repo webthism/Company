@@ -6,45 +6,45 @@ import { Terminal, Palette, Zap, Rocket } from "lucide-react";
 export const Services = () => {
   const services = [
     {
-      icon: Terminal,
-      title: "Web Development",
-      description: "High-performance, scalable web applications built with modern frameworks and pixel-perfect attention to detail.",
+      icon: Rocket,
+      title: "3x More Leads",
+      description: "Our conversion-first architecture is designed to turn casual visitors into high-value leads automatically.",
       color: "text-primary",
     },
     {
-      icon: Palette,
-      title: "UI/UX Design",
-      description: "Editorial-grade digital designs that prioritize user experience without compromising on visual spectacle.",
+      icon: Terminal,
+      title: "Mobile-First Design",
+      description: "Over 60% of your traffic is on mobile. We ensure your site looks and performs perfectly on every screen size.",
       color: "text-secondary",
     },
     {
       icon: Zap,
-      title: "Branding",
-      description: "Complete visual identity systems that help brands stand out in saturated digital landscapes.",
+      title: "Lightning Fast Performance",
+      description: "Slow sites kill business. We optimize every kilobyte to ensure sub-second load times that keep users engaged.",
       color: "text-destructive",
     },
     {
-      icon: Rocket,
-      title: "Digital Strategy",
-      description: "Strategic roadmapping to ensure your digital product hits the market with momentum and clarity.",
+      icon: Palette,
+      title: "SEO Built-In",
+      description: "We don't just build sites; we make sure they're found. Advanced SEO structures come standard with every build.",
       color: "text-primary",
     },
   ];
 
   return (
-    <section id="services" className="py-32 bg-[#0a0a0a]">
+    <section id="benefits" className="py-32 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-8">
         <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
           <div className="max-w-2xl">
             <h2 className="font-heading text-4xl md:text-7xl font-black tracking-tighter mb-6">
-              Our Services
+              The Value Stack
             </h2>
             <p className="text-muted-foreground text-lg font-sans font-light">
-              We don't just build websites; we engineer digital identities using cutting-edge technology and artistic precision.
+              We focus on the metrics that matter. Our websites are built to be your most powerful marketing asset.
             </p>
           </div>
           <div className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4">
-            Precision & Performance
+            Built for Growth
           </div>
         </div>
 
@@ -56,7 +56,7 @@ export const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card p-12 hover:bg-white/[0.02] transition-colors p-16 group border border-transparent rgb-hover"
+              className="bg-card p-12 hover:bg-white/[0.02] transition-colors group p-16 border border-transparent rgb-hover"
             >
               <div className={`mb-8 w-16 h-16 rounded-full flex items-center justify-center bg-white/5 ${service.color}`}>
                 <service.icon size={32} strokeWidth={1.5} />

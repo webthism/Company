@@ -15,12 +15,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="font-heading text-5xl md:text-8xl font-black tracking-tighter leading-tight mb-8"
         >
-          Crafting the <span className="text-primary italic font-serif">Extraordinary</span> <br />
-          in the <motion.span
-            animate={{ opacity: [0.4, 0.8, 0.4] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="text-glow"
-          >Digital Void.</motion.span>
+          Custom Websites That Actually <span className="text-primary italic font-serif">Convert</span>
         </motion.h1>
         
         <motion.p
@@ -29,7 +24,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="max-w-2xl mx-auto text-muted-foreground text-lg md:text-xl mb-12 font-sans font-light leading-relaxed"
         >
-          We are a boutique creative studio focused on high-end web experiences that illuminate brands and redefine digital standards.
+          Stop losing potential clients to outdated designs. We build high-performance websites that look premium and drive massive results.
         </motion.p>
         
         <motion.div
@@ -40,26 +35,21 @@ export const Hero = () => {
         >
           <Button
             size="lg"
-            className="px-10 py-8 rounded-full font-heading font-black text-lg hover:scale-105 transition-transform"
+            className="px-10 py-8 rounded-full font-heading font-black text-lg hover:scale-105 transition-transform bg-primary text-primary-foreground hover:shadow-[0_0_30px_rgba(189,157,255,0.4)]"
           >
-            Let's build something extraordinary
+            Get Your Free Website Audit
           </Button>
           <Button
             variant="outline"
             size="lg"
             className="px-10 py-8 glass rounded-full font-heading font-black text-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
           >
-            View Portfolio
+            Work Examples
           </Button>
         </motion.div>
       </div>
 
-      {/* Decorative vertical indicators */}
-      <div className="absolute bottom-10 left-10 opacity-20 hidden lg:block">
-        <span className="text-xs font-sans tracking-widest text-muted-foreground uppercase">
-          EST. 2024 / VOID-BORN
-        </span>
-      </div>
+
     </section>
   );
 };
