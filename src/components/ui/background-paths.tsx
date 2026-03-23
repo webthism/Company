@@ -1,10 +1,11 @@
 "use client";
 
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 function FloatingPaths({ position }: { position: number }) {
-    const paths = Array.from({ length: 36 }, (_, i) => ({
+    const paths = useMemo(() => Array.from({ length: 24 }, (_, i) => ({
         id: i,
         d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
             380 - i * 5 * position
@@ -15,12 +16,12 @@ function FloatingPaths({ position }: { position: number }) {
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
         color: `rgba(15,23,42,${0.1 + i * 0.03})`,
         width: 0.5 + i * 0.03,
-    }));
+    })), [position]);
 
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_85%)]">
             <svg
-                className="w-full h-full text-slate-950 dark:text-white"
+                className="w-full h-full text-slate-950 dark:text-white/30"
                 viewBox="0 0 696 316"
                 fill="none"
             >
@@ -30,8 +31,8 @@ function FloatingPaths({ position }: { position: number }) {
                         key={path.id}
                         d={path.d}
                         stroke="currentColor"
-                        strokeWidth={path.width}
-                        strokeOpacity={0.1 + path.id * 0.03}
+                        strokeWidth={path.width * 0.7}
+                        strokeOpacity={0.1 + path.id * 0.02}
                         initial={{ pathLength: 0.3, opacity: 0.6 }}
                         animate={{
                             pathLength: 1,
@@ -39,10 +40,11 @@ function FloatingPaths({ position }: { position: number }) {
                             pathOffset: [0, 1, 0],
                         }}
                         transition={{
-                            duration: 20 + Math.random() * 10,
+                            duration: 25 + Math.random() * 15,
                             repeat: Number.POSITIVE_INFINITY,
                             ease: "linear",
                         }}
+                        style={{ willChange: "transform, opacity, pathLength, pathOffset" }}
                     />
                 ))}
             </svg>
@@ -52,13 +54,17 @@ function FloatingPaths({ position }: { position: number }) {
 
 export function BackgroundPaths({
     title = "Background Paths",
+    subtitle,
+    children,
 }: {
     title?: string;
+    subtitle?: string;
+    children?: React.ReactNode;
 }) {
     const words = title.split(" ");
 
     return (
-        <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
+        <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-black">
             <div className="absolute inset-0">
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
@@ -101,29 +107,14 @@ export function BackgroundPaths({
                         ))}
                     </h1>
 
-                    <div
-                        className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 
-                        dark:from-white/10 dark:to-black/10 p-px rounded-2xl backdrop-blur-lg 
-                        overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-                    >
-                        <Button
-                            variant="ghost"
-                            className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
-                            bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 
-                            text-black dark:text-white transition-all duration-300 
-                            group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10
-                            hover:shadow-md dark:hover:shadow-neutral-800/50"
-                        >
-                            <span className="opacity-90 group-hover:opacity-100 transition-opacity">
-                                Discover Excellence
-                            </span>
-                            <span
-                                className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 
-                                transition-all duration-300"
-                            >
-                                →
-                            </span>
-                        </Button>
+                    {subtitle && (
+                        <p className="max-w-2xl mx-auto text-[#A1A1AA] text-lg md:text-xl mb-14 font-sans font-light leading-relaxed">
+                            {subtitle}
+                        </p>
+                    )}
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        {children}
                     </div>
                 </motion.div>
             </div>
