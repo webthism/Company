@@ -35,6 +35,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${manrope.variable} ${inter.variable} ${pacifico.variable} dark`}
+      suppressHydrationWarning
     >
       <head>
         {/* Google Analytics Placeholder */}

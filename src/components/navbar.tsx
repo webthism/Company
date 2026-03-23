@@ -23,9 +23,9 @@ export const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <div className="text-3xl font-normal font-logo text-white">
+        <a href="/" className="text-3xl font-normal font-logo text-white hover:opacity-80 transition-opacity">
           Webthism
-        </div>
+        </a>
         
         <div className="hidden md:flex items-center space-x-12">
           <a
@@ -41,7 +41,7 @@ export const Navbar = () => {
             Services
           </a>
           <a
-            href="/#about"
+            href="/about"
             className="font-heading font-bold tracking-tight text-xs uppercase text-muted-foreground hover:text-white transition-colors"
           >
             About
