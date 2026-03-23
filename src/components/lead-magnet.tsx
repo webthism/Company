@@ -3,85 +3,131 @@
 import { motion } from "framer-motion";
 import { Download, FileText, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Form } from "./ui/form-base";
+import { Field, FieldLabel, Input, FieldError, FormButton } from "./ui/form-components";
+import type { FormEvent } from "react";
 
 export const LeadMagnet = () => {
   return (
-    <section className="py-32 bg-primary/5 border-y border-white/5 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <section className="relative py-48 bg-black overflow-hidden border-t border-white/5">
+      {/* Immersive Background Elements */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#BD9DFF]/5 blur-[160px] -z-10 rounded-full opacity-30" />
+
+      <div className="max-w-7xl mx-auto px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
           >
-            <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-primary/20 rounded-full text-primary border border-primary/20">
-              <span className="text-xs font-bold tracking-widest uppercase">Free Growth Resource</span>
+            <div className="mb-10 inline-flex items-center gap-3 px-5 py-2.5 bg-white/[0.03] rounded-full text-[#BD9DFF] border border-white/10 backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#BD9DFF] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD9DFF]"></span>
+              </span>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Free Resource</span>
             </div>
-            <h2 className="font-heading text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">
-              Download Our <br />
-              <span className="text-primary italic font-serif">2026 Website</span> <br />
-              Checklist
+            
+            <h2 className="font-heading text-5xl md:text-8xl font-black tracking-tighter mb-10 text-white leading-[0.9]">
+              The 2026 <br />
+              <span className="text-[#BD9DFF] italic font-serif">Growth</span> <br />
+              Blueprint
             </h2>
-            <p className="text-muted-foreground text-xl font-sans font-light mb-12 max-w-lg leading-relaxed">
-              Discover the exact framework we use to build high-converting websites. 
-              Avoid the common mistakes that are costing you leads.
+            
+            <p className="text-[#A1A1AA] text-xl font-sans font-extralight mb-16 max-w-lg leading-relaxed italic opacity-80">
+              Discover the exact "conversion-first" framework we use to build 7-figure digital ecosystems for our partners.
             </p>
             
-            <div className="bg-zinc-900/50 p-8 rounded-[2rem] border border-white/10 backdrop-blur-xl">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-2">Website URL</label>
-                    <input type="url" placeholder="https://yourwebsite.com" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-colors" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-2">Email Address</label>
-                    <input type="email" placeholder="you@company.com" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-colors" />
-                  </div>
+            <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl relative overflow-hidden group shadow-2xl">
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#BD9DFF]/10 blur-[80px] rounded-full group-hover:bg-[#BD9DFF]/20 transition-colors duration-700" />
+              
+              <Form 
+                className="gap-6" 
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const target = e.currentTarget as HTMLFormElement;
+                  const btn = target.querySelector('button');
+                  if (!btn) return;
+                  
+                  const originalText = btn.innerHTML;
+                  btn.disabled = true;
+                  btn.innerHTML = "Processing Access...";
+                  
+                  await new Promise(r => setTimeout(r, 1500));
+                  alert("Blueprint access has been sent to your inbox.");
+                  
+                  btn.disabled = false;
+                  btn.innerHTML = originalText;
+                }}
+              >
+                <div className="grid grid-cols-1 gap-6">
+                  <Field name="name">
+                    <FieldLabel className="text-[#BD9DFF]">Full Name</FieldLabel>
+                    <Input placeholder="Jane Doe" required className="border-white/5 bg-white/5" />
+                  </Field>
+
+                  <Field name="email">
+                    <FieldLabel className="text-[#BD9DFF]">Email Address</FieldLabel>
+                    <Input placeholder="you@example.com" required type="email" className="border-white/5 bg-white/5" />
+                  </Field>
                 </div>
                 
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-2">Biggest Problem Right Now</label>
-                  <input type="text" placeholder="e.g., Not enough leads, Slow loading..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-colors" />
-                </div>
+                <FormButton type="submit" className="w-full mt-4 h-16 text-xl">
+                  Get Instant Access
+                </FormButton>
 
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-2">Monthly Revenue (Optional)</label>
-                  <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-colors appearance-none">
-                    <option className="bg-zinc-900">$0 - $10k</option>
-                    <option className="bg-zinc-900">$10k - $50k</option>
-                    <option className="bg-zinc-900">$50k - $200k</option>
-                    <option className="bg-zinc-900">$200k+</option>
-                  </select>
-                </div>
-
-                <Button
-                  size="lg"
-                  className="w-full py-8 rounded-2xl font-heading font-black text-lg bg-primary text-primary-foreground hover:scale-[1.02] transition-transform shadow-[0_0_30px_rgba(189,157,255,0.2)]"
-                >
-                  Download My Free Checklist
-                </Button>
-              </form>
+                <p className="text-[10px] text-center text-[#A1A1AA] font-sans tracking-[0.2em] uppercase opacity-40">
+                   Join 2,400+ Elite Business Owners 
+                </p>
+              </Form>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: 50 }}
+            initial={{ opacity: 0, scale: 0.9, x: 60 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="relative hidden md:block"
+            className="relative perspective-2000 hidden lg:block"
           >
-            <div className="absolute inset-0 aura-glow opacity-30" />
-            <div className="relative bg-zinc-900 aspect-[4/5] rounded-[3rem] border border-white/5 shadow-2xl overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-              <div className="p-12 h-full flex flex-col justify-end relative z-20">
-                <FileText size={64} className="text-primary mb-6 group-hover:scale-110 transition-transform duration-500" />
-                <h3 className="text-3xl font-heading font-black tracking-tighter text-white mb-2">WebGrowth Blueprint 2026</h3>
-                <p className="text-muted-foreground font-sans text-sm tracking-widest uppercase">Expert PDF Guide</p>
+            {/* 3D Document Mockup */}
+            <motion.div
+              whileHover={{ rotateY: -15, rotateX: 10, scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 100, damping: 30 }}
+              className="relative aspect-[3/4] max-w-[450px] mx-auto group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-[#BD9DFF]/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              
+              <div className="relative h-full w-full bg-[#111111] rounded-[3.5rem] border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col p-16">
+                {/* PDF Chrome-like Header */}
+                <div className="flex gap-2 mb-12 opacity-30">
+                  <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                </div>
+
+                <div className="mt-auto">
+                    <div className="mb-8 w-16 h-1 w-full bg-gradient-to-r from-[#BD9DFF] to-transparent rounded-full opacity-50" />
+                    <FileText size={80} strokeWidth={1} className="text-[#BD9DFF] mb-8" />
+                    <h3 className="font-heading text-4xl font-black tracking-tighter text-white mb-4 leading-tight">
+                        WebGrowth <br />
+                        <span className="text-[#BD9DFF]">Blueprint</span> <br />
+                        2026
+                    </h3>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                        <CheckCircle size={14} className="text-[#BD9DFF]" />
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-[#A1A1AA]">Expert PDF Guide + Video</p>
+                    </div>
+                </div>
+
+                {/* Abstract Blueprint Lines */}
+                <div className="absolute top-0 right-0 w-full h-full opacity-[0.03] pointer-events-none"
+                    style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}
+                />
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
