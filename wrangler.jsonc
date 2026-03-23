@@ -8,7 +8,7 @@
 		"global_fetch_strictly_public"
 	],
 	"build": {
-		"command": "npm run build"
+		"command": "npx opennextjs-cloudflare build"
 	},
 	"assets": {
 		"directory": ".open-next/assets",
