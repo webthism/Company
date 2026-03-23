@@ -36,12 +36,12 @@ export const Services = () => {
       {/* Matching Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_95%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="mb-24 text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-10">
-          <div className="max-w-2xl">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <div className="mb-24 flex flex-col items-center gap-6">
+          <div className="max-w-3xl">
             <motion.h2 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="font-heading text-5xl md:text-8xl font-black tracking-tighter mb-8 text-white"
             >
@@ -50,11 +50,6 @@ export const Services = () => {
             <p className="text-[#A1A1AA] text-lg md:text-xl font-sans font-light leading-relaxed">
               We focus on the metrics that matter. Our websites are built to be your most powerful marketing asset.
             </p>
-          </div>
-          <div className="hidden md:block pb-5">
-            <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[#BD9DFF] text-[10px] font-bold tracking-[0.3em] uppercase">
-              Built for Growth
-            </div>
           </div>
         </div>
 

@@ -20,9 +20,11 @@ const pacifico = Pacifico({
 });
 
 export const metadata: Metadata = {
-  title: "WebThism | Premium Digital Craft Agency",
+  title: "Webthism | Premium Digital Craft Agency",
   description: "Crafting extraordinary digital experiences in the void. A boutique creative studio focused on high-end web experiences.",
 };
+
+import { ThemeProvider } from "@/components/theme-provider";
 
 export default function RootLayout({
   children,
@@ -63,7 +65,11 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

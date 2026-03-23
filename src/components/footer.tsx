@@ -39,7 +39,7 @@ export const Footer = () => {
           </div>
           
           <div className="font-sans text-xs text-muted-foreground tracking-widest uppercase opacity-40">
-            © 2026 WebThism. All Rights Reserved.
+            © 2026 Webthism. All Rights Reserved.
           </div>
         </div>
       </div>

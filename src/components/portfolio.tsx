@@ -1,62 +1,76 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { IconCloud } from "@/components/ui/interactive-icon-cloud";
+
+const slugs = [
+  "typescript",
+  "javascript",
+  "dart",
+  "java",
+  "react",
+  "flutter",
+  "android",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express",
+  "nextdotjs",
+  "prisma",
+  "amazonaws",
+  "postgresql",
+  "firebase",
+  "nginx",
+  "vercel",
+  "testinglibrary",
+  "jest",
+  "cypress",
+  "docker",
+  "git",
+  "jira",
+  "github",
+  "gitlab",
+  "visualstudiocode",
+  "androidstudio",
+  "sonarqube",
+  "figma",
+];
 
 export const Portfolio = () => {
-  const projects = [
-    {
-      title: "Neural Dynamics",
-      category: "Web App / AI",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDPGs0SOrQWfbWqourfmDz55VlSsNm3xQKbTE84_El-bZaMpqpe0RbaizyBsiHlqEols6SsZG_LeWav4bXHYb570c7KsGCn1gjoH9Ud2fqWqfINyaRVIRQAeIiA-5a49iLHYQgLkwg4b9UsLycQ5uvJJqKVWhHNKRe1yB8qxxY0pka3DC7NTuwOJIQBHsPAsL9ieKlt4sCPQlm9RhUf1OkQN2BOrWmNd36Y9mRF7YMFG9Au6q1TV1-Z4v0a74fBV_wHvonTXqxu60g",
-      span: "md:col-span-8",
-      color: "text-primary",
-      result: "Increased conversions by 340%",
-    },
-    {
-      title: "Ethereal",
-      category: "Design / Art",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAAPeWE9gdlXl6tGYBg8Td2IyzxrDO0p_1UIovg_dN55op_W7Kr1pOulu_X9zOPIFjxOCTAix0O59FkHdijz01vY0pPoffbCXYAQfS8Cbb1XT1M5AdVMS8M87qATfL4OZp89S232y2qZNJVsWD11phWIt1FI8vrLlpiBrbNUpwR1o840EpmHDr6adTqxnwoq1i_mQgnlAm2H7tbYdEuhHrRuPYIb0GxOKJTY1TWVtY9-kJ_utU-vpMRC6uljblPbwaUxpJqh-Is0MU",
-      span: "md:col-span-4",
-      color: "text-secondary",
-      result: "2.4s faster load-time",
-    },
-  ];
-
   return (
-    <section id="work" className="py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-8">
-        <h2 className="font-heading text-4xl md:text-7xl font-black tracking-tighter mb-20 leading-tight">
-          Case Studies & Selected Works
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          {projects.map((project, index) => (
+    <section id="tech-stack" className="relative py-32 bg-black overflow-hidden border-t border-white/5">
+      {/* Background Grid - Matching Hero/Services */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <div className="mb-20">
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="font-heading text-5xl md:text-8xl font-black tracking-tighter mb-8 text-white"
+          >
+            Fully Custom Coded <br /><span className="text-[#BD9DFF] italic font-serif">Websites</span>
+          </motion.h2>
+          <p className="max-w-2xl mx-auto text-[#A1A1AA] text-lg md:text-xl font-sans font-light leading-relaxed">
+            We use a world-class technology stack to ensure your website is fast, secure, and infinitely scalable.
+          </p>
+        </div>
+
+        {/* --- Interactive Icon Cloud --- */}
+        <div className="relative flex size-full max-w-4xl mx-auto items-center justify-center overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-sm p-4 md:p-20">
+            {/* Subtle glow behind cloud */}
+            <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full" />
+            
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, clipPath: "inset(10% 0 10% 0)" }}
-              whileInView={{ opacity: 1, clipPath: "inset(0% 0 0% 0)" }}
-              transition={{ duration: 1, ease: "circOut", delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className={`${project.span} group relative overflow-hidden rounded-[2.5rem] bg-card hover:cursor-crosshair`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "circOut" }}
+                className="w-full h-full relative z-10"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-[600px] object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale hover:grayscale-0 transition-all"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-12">
-                <p className={`${project.color} font-sans font-bold text-xs uppercase tracking-[0.2em] mb-4`}>
-                  {project.category}
-                </p>
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 w-fit px-4 py-1 rounded-full mb-4">
-                  <span className="text-[10px] font-bold text-primary uppercase tracking-wider">{project.result}</span>
-                </div>
-                <h4 className="text-4xl md:text-5xl font-heading font-black tracking-tighter text-white">
-                  {project.title}
-                </h4>
-              </div>
+                <IconCloud iconSlugs={slugs} />
             </motion.div>
-          ))}
         </div>
       </div>
     </section>
