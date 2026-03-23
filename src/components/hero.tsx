@@ -86,7 +86,7 @@ export const Hero = () => {
               className="h-16 px-12 rounded-full font-heading font-black text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
               onClick={() => document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Get Your Free Website Audit
+              Free Website Checklist
             </Button>
             <Button
               variant="outline"

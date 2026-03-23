@@ -9,19 +9,19 @@ export const Services = () => {
       icon: Rocket,
       title: "3x More Leads",
       description: "Our conversion-first architecture is designed to turn casual visitors into high-value leads automatically.",
-      color: "text-primary",
+      color: "text-[#BD9DFF]",
     },
     {
       icon: Terminal,
       title: "Mobile-First Design",
       description: "Over 60% of your traffic is on mobile. We ensure your site looks and performs perfectly on every screen size.",
-      color: "text-secondary",
+      color: "text-primary",
     },
     {
       icon: Zap,
       title: "Lightning Fast Performance",
       description: "Slow sites kill business. We optimize every kilobyte to ensure sub-second load times that keep users engaged.",
-      color: "text-destructive",
+      color: "text-[#BD9DFF]",
     },
     {
       icon: Palette,
@@ -32,37 +32,59 @@ export const Services = () => {
   ];
 
   return (
-    <section id="benefits" className="py-32 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
+    <section id="benefits" className="relative py-32 bg-black overflow-hidden">
+      {/* Matching Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_95%)] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="mb-24 text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-10">
           <div className="max-w-2xl">
-            <h2 className="font-heading text-4xl md:text-7xl font-black tracking-tighter mb-6">
-              The Value Stack
-            </h2>
-            <p className="text-muted-foreground text-lg font-sans font-light">
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="font-heading text-5xl md:text-8xl font-black tracking-tighter mb-8 text-white"
+            >
+              The Value <span className="text-[#BD9DFF] italic font-serif">Stack</span>
+            </motion.h2>
+            <p className="text-[#A1A1AA] text-lg md:text-xl font-sans font-light leading-relaxed">
               We focus on the metrics that matter. Our websites are built to be your most powerful marketing asset.
             </p>
           </div>
-          <div className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4">
-            Built for Growth
+          <div className="hidden md:block pb-5">
+            <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[#BD9DFF] text-[10px] font-bold tracking-[0.3em] uppercase">
+              Built for Growth
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              whileHover={{ 
+                y: -10, 
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+              }}
               viewport={{ once: true }}
-              className="bg-card p-12 hover:bg-white/[0.02] transition-colors group p-16 border border-transparent rgb-hover"
+              className="relative group p-12 lg:p-16 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-[#BD9DFF]/30 transition-all duration-500 overflow-hidden"
             >
-              <div className={`mb-8 w-16 h-16 rounded-full flex items-center justify-center bg-white/5 ${service.color}`}>
-                <service.icon size={32} strokeWidth={1.5} />
+              {/* Inner Glow */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 blur-[60px] rounded-full group-hover:bg-[#BD9DFF]/10 transition-colors duration-500" />
+              
+              <div className={`mb-10 w-20 h-20 rounded-3xl flex items-center justify-center bg-white/5 border border-white/10 ${service.color} group-hover:scale-110 transition-transform duration-500`}>
+                <service.icon size={36} strokeWidth={1.2} />
               </div>
-              <h3 className="font-heading text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="text-muted-foreground leading-relaxed font-sans font-light">
+              
+              <h3 className="font-heading text-3xl font-bold mb-6 text-white group-hover:text-[#BD9DFF] transition-colors">
+                {service.title}
+              </h3>
+              
+              <p className="text-[#A1A1AA] leading-relaxed text-lg font-sans font-light group-hover:text-white/80 transition-colors">
                 {service.description}
               </p>
             </motion.div>
@@ -72,3 +94,4 @@ export const Services = () => {
     </section>
   );
 };
+
