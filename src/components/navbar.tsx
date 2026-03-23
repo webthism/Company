@@ -28,15 +28,24 @@ export const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-12">
-          {["Work", "Services", "About"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="font-heading font-bold tracking-tight text-xs uppercase text-muted-foreground hover:text-white transition-colors"
-            >
-              {item}
-            </a>
-          ))}
+          <a
+            href="/reviews"
+            className="font-heading font-bold tracking-tight text-xs uppercase text-muted-foreground hover:text-white transition-colors"
+          >
+            Reviews
+          </a>
+          <a
+            href="/#services"
+            className="font-heading font-bold tracking-tight text-xs uppercase text-muted-foreground hover:text-white transition-colors"
+          >
+            Services
+          </a>
+          <a
+            href="/#about"
+            className="font-heading font-bold tracking-tight text-xs uppercase text-muted-foreground hover:text-white transition-colors"
+          >
+            About
+          </a>
         </div>
 
         <Button
