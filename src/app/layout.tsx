@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Inter } from "next/font/google";
+import { Manrope, Inter, Pacifico } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -9,6 +9,12 @@ const manrope = Manrope({
 
 const inter = Inter({
   variable: "--font-sans",
+  subsets: ["latin"],
+});
+
+const pacifico = Pacifico({
+  variable: "--font-logo",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -25,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${inter.variable} dark`}
+      className={`${manrope.variable} ${inter.variable} ${pacifico.variable} dark`}
     >
       <body className="antialiased">{children}</body>
     </html>

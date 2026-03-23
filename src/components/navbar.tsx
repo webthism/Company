@@ -23,8 +23,8 @@ export const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <div className="text-2xl font-black tracking-tighter text-white">
-          WebThism
+        <div className="text-3xl font-normal font-logo text-white">
+          Webthism
         </div>
         
         <div className="hidden md:flex items-center space-x-12">

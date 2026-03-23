@@ -4,8 +4,8 @@ export const Footer = () => {
   return (
     <footer className="bg-black w-full py-16 px-8 border-t border-white/5">
       <div className="flex flex-col md:flex-row justify-between items-center gap-10 max-w-7xl mx-auto">
-        <div className="text-2xl font-black text-white tracking-widest uppercase">
-          WebThism
+        <div className="text-3xl font-normal font-logo text-white">
+          Webthism
         </div>
         
         <div className="flex flex-wrap justify-center gap-10">

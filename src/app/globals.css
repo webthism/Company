@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
+  --font-logo: var(--font-logo);
   
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
