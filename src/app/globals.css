@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-sm: calc(var(--radius) * 0.6);
+  
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+:root {
+  --background: #0e0e0e;
+  --foreground: #ffffff;
+  
+  --card: #1a1919;
+  --card-foreground: #ffffff;
+  
+  --popover: #1a1919;
+  --popover-foreground: #ffffff;
+  
+  --primary: #bd9dff;
+  --primary-foreground: #3c0089;
+  
+  --secondary: #a88cfb;
+  --secondary-foreground: #260069;
+  
+  --muted: #262626;
+  --muted-foreground: #adaaaa;
+  
+  --accent: #2c2c2c;
+  --accent-foreground: #ffffff;
+  
+  --destructive: #ff6e84;
+  --destructive-foreground: #490013;
+  
+  --border: #484847;
+  --input: #484847;
+  --ring: #bd9dff;
+  
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #0e0e0e;
+  --foreground: #ffffff;
+  /* Same as root because we want dark by default */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-white/10;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(189, 157, 255, 0.3);
+  }
+  
+  .aura-glow {
+    background: radial-gradient(circle at center, rgba(189, 157, 255, 0.08) 0%, transparent 70%);
+  }
+  
+  .rgb-hover {
+    @apply transition-all duration-500 border border-transparent;
+  }
+  
+  .rgb-hover:hover {
+    border-color: transparent;
+    background-image: linear-gradient(#1a1919, #1a1919), linear-gradient(to right, #bd9dff, #ff97b2);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+}
