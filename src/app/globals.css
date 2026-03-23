@@ -79,7 +79,6 @@
   --background: #0e0e0e;
   --foreground: #ffffff;
   /* Same as root because we want dark by default */
-  /* Hello */
 }
 
 @layer base {
