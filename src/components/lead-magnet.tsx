@@ -61,13 +61,11 @@ export const LeadMagnet = () => {
                     const result = await sendBlueprintAccess(email, name);
                     if (result.success) {
                       setIsSuccess(true);
-                      alert("Blueprint access has been sent to your inbox.");
                     } else {
-                      alert(result.error || "Something went wrong. Please try again.");
+                      console.error("Submission failed:", result.error);
                     }
                   } catch (error) {
                     console.error("Submission error:", error);
-                    alert("An unexpected error occurred.");
                   } finally {
                     setIsSubmitting(false);
                   }
