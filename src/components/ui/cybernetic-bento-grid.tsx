@@ -8,7 +8,6 @@ import {
   MessageSquare, 
   ShieldCheck, 
   BarChart3, 
-  Inbox, 
   Zap, 
   Share2, 
   Megaphone, 
@@ -115,6 +114,12 @@ export const CyberneticBentoGrid = () => {
                     <div className="mt-auto h-32 w-full bg-gradient-to-t from-[#BD9DFF]/10 to-transparent rounded-2xl border-t border-white/5" />
                 </BentoItem>
 
+                <BentoItem 
+                    icon={Zap}
+                    title="Lead Followup"
+                    description="Instant missed-call text-back & booking."
+                />
+
                 {/* Wide Card: Advertising */}
                 <BentoItem 
                     className="md:col-span-2"
@@ -124,15 +129,9 @@ export const CyberneticBentoGrid = () => {
                 />
 
                 <BentoItem 
-                    icon={Inbox}
-                    title="Unified Inbox"
-                    description="Every customer stream in one high-speed view."
-                />
-
-                <BentoItem 
-                    icon={Zap}
-                    title="Lead Followup"
-                    description="Instant missed-call text-back & booking."
+                    icon={Facebook}
+                    title="Paid Social"
+                    description="Strategic Facebook Ad infrastructure."
                 />
 
                 {/* Big Card 2: Search & SEO */}
@@ -144,12 +143,7 @@ export const CyberneticBentoGrid = () => {
                 />
 
                 <BentoItem 
-                    icon={Facebook}
-                    title="Paid Social"
-                    description="Strategic Facebook Ad infrastructure."
-                />
-
-                <BentoItem 
+                    className="md:col-span-2"
                     icon={Globe}
                     title="Expert PPC"
                     description="Precision-engineered Google Ads campaigns."

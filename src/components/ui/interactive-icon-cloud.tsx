@@ -64,10 +64,12 @@ export type DynamicCloudProps = {
 type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>
 
 export function IconCloud({ iconSlugs }: DynamicCloudProps) {
+  const [mounted, setMounted] = useState(false)
   const [data, setData] = useState<IconData | null>(null)
   const { theme } = useTheme()
 
   useEffect(() => {
+    setMounted(true)
     fetchSimpleIcons({ slugs: iconSlugs }).then(setData)
   }, [iconSlugs])
 
@@ -78,6 +80,8 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
       renderCustomIcon(icon, theme || "light"),
     )
   }, [data, theme])
+
+  if (!mounted) return null
 
   return (
     // @ts-ignore

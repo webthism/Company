@@ -1,10 +1,10 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+
 import { Card } from "@/components/ui/card";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { useState } from "react";
 
 const faqs = [
@@ -133,34 +133,6 @@ export function FAQAccordionBlock() {
             );
           })}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-24 text-center"
-        >
-          <div className="mx-auto rounded-[3rem] bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 p-10 md:p-16 backdrop-blur-3xl relative overflow-hidden group">
-            <div className="absolute inset-0 bg-[#BD9DFF]/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-            <MessageCircle className="mx-auto mb-8 h-12 w-12 text-[#BD9DFF]" />
-            <h3 className="mb-4 text-3xl font-heading font-black md:text-5xl text-white">
-              Still have questions?
-            </h3>
-            <p className="mb-12 text-[#A1A1AA] font-sans font-light max-w-xl mx-auto md:text-lg">
-              Our team is ready to discuss your specific needs and build a custom growth roadmap for your business.
-            </p>
-            <div className="flex flex-col justify-center gap-6 sm:flex-row relative z-10">
-              <Button size="lg" className="rounded-full bg-[#BD9DFF] text-black hover:scale-105 h-16 px-10 text-lg font-heading font-black transition-all">
-                Contact Support
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full border-white/20 hover:bg-white/5 h-16 px-10 text-lg font-heading font-bold transition-all">
-                View Documentation
-              </Button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

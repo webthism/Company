@@ -48,12 +48,14 @@ export const Navbar = () => {
           </a>
         </div>
 
-        <Button
-          size="sm"
-          className="rounded-full px-8 font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform"
-        >
-          Contact
-        </Button>
+        <a href="/#book">
+          <Button
+            size="sm"
+            className="rounded-full px-8 bg-[#BD9DFF] text-black font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform"
+          >
+            Contact
+          </Button>
+        </a>
       </div>
     </nav>
   );
