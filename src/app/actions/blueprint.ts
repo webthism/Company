@@ -1,6 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,6 +10,22 @@ export async function sendBlueprintAccess(email: string, name: string) {
     return { error: "Missing email or name" };
   }
 
+  // 1. Save to Cloudflare D1 (Unlimited)
+  try {
+    const { env } = await getCloudflareContext();
+    if ((env as any).DB) {
+      await (env as any).DB.prepare(
+        "INSERT OR IGNORE INTO leads (name, email) VALUES (?, ?)"
+      ).bind(name, email).run();
+      console.log("Lead saved to D1:", email);
+    } else {
+      console.warn("D1 Database binding 'DB' not found. Data not saved.");
+    }
+  } catch (dbError) {
+    console.error("D1 Database error:", dbError);
+  }
+
+  // 2. Send via Resend (Free 3,000/mo)
   const blueprintLink = "https://docs.google.com/document/d/1R6_EK7k0Pb_zkYl-PCWRLpMdJf9WMCUtKT8-xi1Pt_4/edit?usp=sharing";
 
   try {
@@ -49,6 +66,6 @@ export async function sendBlueprintAccess(email: string, name: string) {
     return { success: true, data };
   } catch (err: any) {
     console.error("Server Action Exception:", err);
-    return { error: err.message || "Failed to send email" };
+    return { error: err.message || "Failed to submit request" };
   }
 }

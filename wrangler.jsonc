@@ -22,6 +22,13 @@
 			"service": "landing-page"
 		}
 	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "webthism-db",
+			"database_id": "5a0eb508-2bec-40be-8743-d496007aa1ea"
+		}
+	],
 	"images": {
 		// Enable image optimization
 		// see https://opennext.js.org/cloudflare/howtos/image
