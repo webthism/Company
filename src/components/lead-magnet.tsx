@@ -11,6 +11,7 @@ import { useState } from "react";
 export const LeadMagnet = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <section className="relative py-48 bg-black overflow-hidden border-t border-white/5">
@@ -52,6 +53,7 @@ export const LeadMagnet = () => {
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setIsSubmitting(true);
+                  setError(null);
                   
                   const formData = new FormData(e.currentTarget as HTMLFormElement);
                   const name = formData.get("name") as string;
@@ -62,9 +64,11 @@ export const LeadMagnet = () => {
                     if (result.success) {
                       setIsSuccess(true);
                     } else {
+                      setError(result.error || "Submission failed. Please check your config.");
                       console.error("Submission failed:", result.error);
                     }
                   } catch (error) {
+                    setError("An unexpected error occurred.");
                     console.error("Submission error:", error);
                   } finally {
                     setIsSubmitting(false);
@@ -91,6 +95,12 @@ export const LeadMagnet = () => {
                 >
                   {isSuccess ? "Access Sent!" : "Get Instant Access"}
                 </FormButton>
+
+                {error && (
+                  <p className="text-red-400 text-xs text-center mt-2 font-mono opacity-80">
+                    {error}
+                  </p>
+                )}
 
                 <p className="text-[10px] text-center text-[#A1A1AA] font-sans tracking-[0.2em] uppercase opacity-40">
                    Join 2,400+ Elite Business Owners 
