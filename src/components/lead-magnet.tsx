@@ -5,9 +5,13 @@ import { Download, FileText, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Form } from "./ui/form-base";
 import { Field, FieldLabel, Input, FieldError, FormButton } from "./ui/form-components";
-import type { FormEvent } from "react";
+import { sendBlueprintAccess } from "@/app/actions/blueprint";
+import { useState } from "react";
 
 export const LeadMagnet = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
   return (
     <section className="relative py-48 bg-black overflow-hidden border-t border-white/5">
       {/* Immersive Background Elements */}
@@ -47,35 +51,47 @@ export const LeadMagnet = () => {
                 className="gap-6" 
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  const target = e.currentTarget as HTMLFormElement;
-                  const btn = target.querySelector('button');
-                  if (!btn) return;
+                  setIsSubmitting(true);
                   
-                  const originalText = btn.innerHTML;
-                  btn.disabled = true;
-                  btn.innerHTML = "Processing Access...";
+                  const formData = new FormData(e.currentTarget as HTMLFormElement);
+                  const name = formData.get("name") as string;
+                  const email = formData.get("email") as string;
                   
-                  await new Promise(r => setTimeout(r, 1500));
-                  alert("Blueprint access has been sent to your inbox.");
-                  
-                  btn.disabled = false;
-                  btn.innerHTML = originalText;
+                  try {
+                    const result = await sendBlueprintAccess(email, name);
+                    if (result.success) {
+                      setIsSuccess(true);
+                      alert("Blueprint access has been sent to your inbox.");
+                    } else {
+                      alert(result.error || "Something went wrong. Please try again.");
+                    }
+                  } catch (error) {
+                    console.error("Submission error:", error);
+                    alert("An unexpected error occurred.");
+                  } finally {
+                    setIsSubmitting(false);
+                  }
                 }}
               >
                 <div className="grid grid-cols-1 gap-6">
                   <Field name="name">
                     <FieldLabel className="text-[#BD9DFF]">Full Name</FieldLabel>
-                    <Input placeholder="Jane Doe" required className="border-white/5 bg-white/5" />
+                    <Input name="name" placeholder="Jane Doe" required className="border-white/5 bg-white/5" />
                   </Field>
 
                   <Field name="email">
                     <FieldLabel className="text-[#BD9DFF]">Email Address</FieldLabel>
-                    <Input placeholder="you@example.com" required type="email" className="border-white/5 bg-white/5" />
+                    <Input name="email" placeholder="you@example.com" required type="email" className="border-white/5 bg-white/5" />
                   </Field>
                 </div>
                 
-                <FormButton type="submit" className="w-full mt-4 h-16 text-xl">
-                  Get Instant Access
+                <FormButton 
+                  type="submit" 
+                  className="w-full mt-4 h-16 text-xl"
+                  loading={isSubmitting}
+                  disabled={isSuccess}
+                >
+                  {isSuccess ? "Access Sent!" : "Get Instant Access"}
                 </FormButton>
 
                 <p className="text-[10px] text-center text-[#A1A1AA] font-sans tracking-[0.2em] uppercase opacity-40">
@@ -83,6 +99,7 @@ export const LeadMagnet = () => {
                 </p>
               </Form>
             </div>
+
           </motion.div>
 
           <motion.div
