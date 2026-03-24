@@ -48,7 +48,7 @@ export const Portfolio = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="font-heading text-5xl md:text-8xl font-black tracking-tighter mb-8 text-white"
+            className="font-heading text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-8 text-white"
           >
             Fully Custom Coded <br /><span className="text-[#BD9DFF] italic font-serif">Websites</span>
           </motion.h2>

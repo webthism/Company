@@ -42,7 +42,7 @@ export const Contact = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "circOut" }}
           viewport={{ once: true }}
-          className="font-heading text-5xl md:text-9xl font-black tracking-tighter mb-12"
+          className="font-heading text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter mb-12"
         >
           Ready to <br /> Start?
         </motion.h2>

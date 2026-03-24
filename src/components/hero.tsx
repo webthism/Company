@@ -33,7 +33,7 @@ export const Hero = () => {
       ref={containerRef} 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-black selection:bg-primary/30 [perspective:1200px]"
+      className="relative h-screen pt-24 flex flex-col items-center justify-center overflow-hidden bg-black selection:bg-primary/30 [perspective:1200px]"
     >
       {/* --- Dynamic 3D Environment --- */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -50,7 +50,7 @@ export const Hero = () => {
       {/* --- Floating 3D Content Card --- */}
       <motion.div 
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="container mx-auto px-6 relative z-10 py-20 rounded-3xl backdrop-blur-[2px]"
+        className="container mx-auto px-6 relative z-10 py-10 rounded-3xl backdrop-blur-[2px]"
       >
         <div className="max-w-5xl mx-auto text-center" style={{ transform: "translateZ(50px)" }}>
           {/* Headline with Depth */}
@@ -58,7 +58,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-heading text-6xl md:text-[8.5rem] font-bold tracking-tight leading-[0.95] mb-12 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+            className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight leading-[0.95] mb-6 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
           >
             Custom Websites That <br />
             Actually <span className="text-[#BD9DFF] italic font-serif">Convert</span>
@@ -69,7 +69,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="max-w-2xl mx-auto text-[#A1A1AA] text-lg md:text-2xl mb-16 font-sans font-light leading-relaxed [transform:translateZ(30px)]"
+            className="max-w-3xl mx-auto text-[#A1A1AA] text-base md:text-xl mb-10 font-sans font-light leading-relaxed [transform:translateZ(30px)]"
           >
             We design, build, and scale high-performance digital experiences that turn visitors into loyal customers. No templates, just pure conversion.
           </motion.p>
@@ -79,11 +79,11 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 [transform:translateZ(80px)]"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 [transform:translateZ(80px)]"
           >
             <Button
               size="lg"
-              className="h-16 px-12 rounded-full font-heading font-black text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
+              className="h-14 md:h-16 px-8 md:px-12 rounded-full font-heading font-black text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
               onClick={() => document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Free Website Checklist
@@ -91,7 +91,7 @@ export const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="h-16 px-12 rounded-full font-heading font-black text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
+              className="h-14 md:h-16 px-8 md:px-12 rounded-full font-heading font-black text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
               onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
             >
               View Our Work

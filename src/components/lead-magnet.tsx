@@ -35,7 +35,7 @@ export const LeadMagnet = () => {
               <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Free Resource</span>
             </div>
             
-            <h2 className="font-heading text-5xl md:text-8xl font-black tracking-tighter mb-10 text-white leading-[0.9]">
+            <h2 className="font-heading text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-10 text-white leading-[0.9]">
               The 2026 <br />
               <span className="text-[#BD9DFF] italic font-serif">Growth</span> <br />
               Blueprint

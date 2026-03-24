@@ -115,7 +115,7 @@ export const Process = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading text-5xl md:text-8xl font-black tracking-tighter mb-8 text-white uppercase"
+            className="font-heading text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-8 text-white uppercase"
           >
             The <span className="text-[#BD9DFF] italic font-serif">Workflow</span>
           </motion.h2>
