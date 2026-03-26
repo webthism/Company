@@ -68,23 +68,21 @@ export const Hero = () => {
         className="container mx-auto px-5 sm:px-6 relative z-10 py-6 md:py-10 rounded-3xl md:backdrop-blur-[2px] will-change-transform"
       >
         <div className="max-w-5xl mx-auto text-center" style={{ transformStyle: "preserve-3d" }}>
-          {/* Headline - Added translateZ for proper 3D depth */}
-          <motion.h1
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            style={{ transform: "translateZ(80px)" }}
-            className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+          {/* Headline - CSS Powered Reveal for Instant LCP metrics */}
+          <h1
+            style={mounted ? { transform: "translate3d(0, 0, 80px)", transformStyle: "preserve-3d" } : {}}
+            className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] lcp-element"
           >
             Custom Websites That <br />
             Actually <span className="text-[#BD9DFF] italic font-serif">Convert</span>
-          </motion.h1>
+          </h1>
           
-          {/* Subtitle - Added translateZ */}
+          {/* Subtitle - translate3d for better performance */}
           <motion.p
             initial={mounted ? { opacity: 0, y: 15 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ transform: "translateZ(40px)" }}
+            style={mounted ? { transform: "translate3d(0, 0, 40px)", transformStyle: "preserve-3d" } : {}}
             className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2"
           >
             We design, build, and scale high-performance digital experiences that turn visitors into loyal customers. No templates, just pure conversion.

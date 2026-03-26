@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const Popup = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,15 +57,13 @@ export const Popup = () => {
               Limited slots available this week! Get a expert breakdown of your site&apos;s performance and conversion potential.
             </p>
 
-            <Button
-              className="w-full py-5 sm:py-6 rounded-xl font-heading font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform text-sm sm:text-base"
-              onClick={() => {
-                window.location.href = "#book";
-                closePopup();
-              }}
-            >
-              Get Free Audit Now
-            </Button>
+            <Link href="/#book" onClick={closePopup}>
+              <Button
+                className="w-full py-5 sm:py-6 rounded-xl font-heading font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform text-sm sm:text-base"
+              >
+                Get Free Audit Now
+              </Button>
+            </Link>
           </div>
         </motion.div>
       )}
