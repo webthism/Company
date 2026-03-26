@@ -84,7 +84,7 @@ export const Hero = () => {
             <Button
               size="lg"
               className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
-              onClick={() => document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('blueprint')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Free Website Checklist
             </Button>

@@ -14,7 +14,7 @@ export const LeadMagnet = () => {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <section className="relative py-20 md:py-48 bg-black overflow-hidden border-t border-white/5">
+    <section id="blueprint" className="relative py-20 md:py-48 bg-black overflow-hidden border-t border-white/5">
       {/* Immersive Background Elements */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#BD9DFF]/5 blur-[160px] -z-10 rounded-full opacity-30" />

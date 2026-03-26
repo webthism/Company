@@ -66,7 +66,7 @@ export default function ServicesPage() {
                  <h2 className="relative z-10 font-heading text-3xl sm:text-4xl md:text-7xl font-black mb-8 md:mb-12">The foundation <br /> of <span className="text-[#BD9DFF] italic font-serif">your growth.</span></h2>
                  <a 
                     href="/#book" 
-                    className="relative z-10 inline-flex px-8 md:px-14 py-4 md:py-6 bg-[#BD9DFF] text-black rounded-full font-heading font-black text-base md:text-xl hover:scale-110 shadow-[0_20px_60px_-15px_rgba(189,157,255,0.4)] transition-all"
+                    className="relative z-10 inline-flex px-8 md:px-14 py-4 md:py-6 bg-[#BD9DFF] text-black rounded-full font-heading font-black text-base md:text-xl hover:scale-110 shadow-[0_20px_60px_-15px_rgba(189,157,255,0.4)] transition-all whitespace-nowrap"
                  >
                      Book Your Strategy Session
                  </a>

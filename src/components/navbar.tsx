@@ -49,12 +49,12 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav
-        className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-          isScrolled ? "bg-black/60 backdrop-blur-3xl border-white/5 py-3 md:py-4 shadow-2xl" : "bg-transparent py-4 md:py-6"
-        )}
-      >
+    <nav
+      className={cn(
+        "fixed top-0 w-full z-[101] transition-all duration-300 border-b border-transparent",
+        isScrolled ? "bg-black/60 backdrop-blur-3xl border-white/5 py-3 md:py-4 shadow-2xl" : "bg-transparent py-4 md:py-6"
+      )}
+    >
         <div className="max-w-7xl mx-auto px-5 md:px-8 flex justify-between items-center">
           <a href="/" className="text-2xl md:text-3xl font-normal font-logo text-white hover:opacity-80 transition-opacity z-50">
             Webthism
@@ -104,7 +104,7 @@ export const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-[100] md:hidden"
           >
             {/* Backdrop */}
             <div 

@@ -92,7 +92,7 @@ export default function ReviewsPage() {
                  <h2 className="relative z-10 font-heading text-2xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8">Ready to be our <span className="text-[#BD9DFF] italic font-serif">Next success</span> story?</h2>
                  <a 
                     href="/#book" 
-                    className="relative z-10 inline-flex px-8 md:px-12 py-4 md:py-5 bg-[#BD9DFF] text-black rounded-full font-heading font-black text-base md:text-xl hover:scale-105 transition-transform"
+                    className="relative z-10 inline-flex px-8 md:px-12 py-4 md:py-5 bg-[#BD9DFF] text-black rounded-full font-heading font-black text-base md:text-xl hover:scale-105 transition-transform whitespace-nowrap"
                  >
                      Book Your Strategy Session
                  </a>
