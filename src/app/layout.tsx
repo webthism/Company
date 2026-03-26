@@ -88,17 +88,19 @@ export default function RootLayout({
     >
       <head>
         {/* Google Analytics Placeholder */}
-        {/* Google Analytics - Moved to lazyOnload for Performance */}
+        {/* Google Analytics - Updated with Correct Measurement ID */}
         <Script
-          strategy="lazyOnload"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`}
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-KGPE4FTQ8D`}
         />
-        <Script id="google-analytics" strategy="lazyOnload">
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
+            gtag('config', 'G-KGPE4FTQ8D', {
+              page_path: window.location.pathname,
+            });
           `}
         </Script>
 
