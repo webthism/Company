@@ -2,14 +2,24 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Optimization: Delay hydration-heavy interactive logic until main thread is idle
+    // This pushes TBT down significantly without breaking the animation functionality.
+    const handleIdle = (window as any).requestIdleCallback || ((cb: any) => setTimeout(cb, 50));
+    const idleId = handleIdle(() => {
+      setMounted(true);
+    });
+    return () => {
+      if ((window as any).cancelIdleCallback) (window as any).cancelIdleCallback(idleId);
+      else clearTimeout(idleId);
+    };
   }, []);
 
   // --- 3D Tilt Physics ---
@@ -19,19 +29,19 @@ export const Hero = () => {
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), { stiffness: 150, damping: 25 });
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), { stiffness: 150, damping: 25 });
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     mouseX.set((e.clientX - centerX) / rect.width);
     mouseY.set((e.clientY - centerY) / rect.height);
-  };
+  }, [mouseX, mouseY]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     mouseX.set(0);
     mouseY.set(0);
-  };
+  }, [mouseX, mouseY]);
 
   return (
     <section 
@@ -80,7 +90,7 @@ export const Hero = () => {
             We design, build, and scale high-performance digital experiences that turn visitors into loyal customers. No templates, just pure conversion.
           </motion.p>
           
-          {/* Action Buttons - Added translateZ */}
+          {/* Action Buttons - Crawlable for SEO */}
           <motion.div
             initial={mounted ? { opacity: 0, y: 15 } : false}
             animate={{ opacity: 1, y: 0 }}
@@ -88,21 +98,23 @@ export const Hero = () => {
             style={{ transform: "translateZ(100px)" }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0"
           >
-            <Button
-              size="lg"
-              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
-              onClick={() => document.getElementById('blueprint')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Free Website Checklist
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
-              onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Our Work
-            </Button>
+            <Link href="/#blueprint" scroll={true} className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="w-full h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
+              >
+                Free Website Checklist
+              </Button>
+            </Link>
+            <Link href="/#testimonials" scroll={true} className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
+              >
+                View Our Work
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </motion.div>
