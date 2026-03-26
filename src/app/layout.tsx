@@ -6,17 +6,20 @@ import "./globals.css";
 const manrope = Manrope({
   variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const pacifico = Pacifico({
   variable: "--font-logo",
   weight: "400",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -85,11 +88,12 @@ export default function RootLayout({
     >
       <head>
         {/* Google Analytics Placeholder */}
+        {/* Google Analytics - Moved to lazyOnload for Performance */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -98,8 +102,8 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Hotjar Placeholder */}
-        <Script id="hotjar" strategy="afterInteractive">
+        {/* Hotjar - Moved to lazyOnload for Performance */}
+        <Script id="hotjar" strategy="lazyOnload">
           {`
             (function(h,o,t,j,a,r){
                 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};

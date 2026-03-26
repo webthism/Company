@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { Services } from "@/components/services";
-import { Stakes } from "@/components/stakes";
 
 // Lazy load below-the-fold/heavy components
+const Services = dynamic(() => import("@/components/services").then(m => m.Services));
+const Stakes = dynamic(() => import("@/components/stakes").then(m => m.Stakes));
 const Portfolio = dynamic(() => import("@/components/portfolio").then(m => m.Portfolio), {
   loading: () => <div className="h-96 animate-pulse bg-white/5 mx-5 rounded-3xl" />,
 });
