@@ -68,14 +68,15 @@ export const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="/#book" className="hidden sm:block" aria-label="Book a strategy session">
-              <Button
-                size="sm"
-                className="rounded-full px-6 md:px-8 bg-[#BD9DFF] text-black font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform text-xs"
-              >
+            <Button
+              asChild
+              size="sm"
+              className="rounded-full px-6 md:px-8 bg-[#BD9DFF] text-black font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform text-xs hidden sm:flex"
+            >
+              <Link href="/#book" aria-label="Book a strategy session">
                 Contact
-              </Button>
-            </Link>
+              </Link>
+            </Button>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -139,14 +140,15 @@ export const Navbar = () => {
                 transition={{ delay: 0.3 }}
                 className="mt-4"
               >
-                <Link href="/#book" onClick={() => setIsMobileMenuOpen(false)} aria-label="Book a strategy session">
-                  <Button
-                    size="lg"
-                    className="rounded-full px-12 h-14 bg-[#BD9DFF] text-black font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform text-base"
-                  >
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full px-12 h-14 bg-[#BD9DFF] text-black font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform text-base"
+                >
+                  <Link href="/#book" onClick={() => setIsMobileMenuOpen(false)} aria-label="Book a strategy session">
                     Contact Us
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </motion.div>
             </motion.div>
           </motion.div>

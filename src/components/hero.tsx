@@ -67,45 +67,55 @@ export const Hero = () => {
         className="container mx-auto px-5 sm:px-6 relative z-10 py-6 md:py-10 rounded-3xl md:backdrop-blur-[2px] will-change-transform"
       >
         <div className="max-w-5xl mx-auto text-center" style={{ transformStyle: "preserve-3d" }}>
-          {/* Headline - CSS Reveal Layer for Zero-JS LCP */}
+          {/* Headline - Zero-JS LCP Stability */}
           <h1
-            style={{ transform: "translate3d(0, 0, 80px)", transformStyle: "preserve-3d" }}
-            className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] lcp-element"
+            style={{ 
+              transform: isInteractive ? "translate3d(0, 0, 80px)" : "none",
+              transformStyle: "preserve-3d" 
+            }}
+            className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform-gpu"
           >
             Custom Websites That <br />
             Actually <span className="text-[#BD9DFF] italic font-serif">Convert</span>
           </h1>
           
-          {/* Subtitle - Hardware Accelerated */}
           <p
-            style={{ transform: "translate3d(0, 0, 40px)", transformStyle: "preserve-3d" }}
-            className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2 lcp-element [animation-delay:0.2s]"
+            style={{ 
+              transform: isInteractive ? "translate3d(0, 0, 40px)" : "none",
+              transformStyle: "preserve-3d" 
+            }}
+            className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2 transition-all duration-700"
           >
             We design, build, and scale high-performance digital experiences that turn visitors into loyal customers. No templates, just pure conversion.
           </p>
           
-          {/* Action Buttons - Crawlable for SEO */}
           <div
-            style={{ transform: "translate3d(0, 0, 100px)", transformStyle: "preserve-3d" }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0 lcp-element [animation-delay:0.4s]"
+            style={{ 
+              transform: isInteractive ? "translate3d(0, 0, 100px)" : "none",
+              transformStyle: "preserve-3d" 
+            }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0"
           >
-            <Link href="/#blueprint" scroll={true} className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
-              >
+            <Button
+              asChild
+              size="lg"
+              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
+            >
+              <Link href="/#blueprint" scroll={true}>
                 Free Website Checklist
-              </Button>
-            </Link>
-            <Link href="/#testimonials" scroll={true} className="w-full sm:w-auto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
-              >
+              </Link>
+            </Button>
+            
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
+            >
+              <Link href="/#testimonials" scroll={true}>
                 View Our Work
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </motion.div>
