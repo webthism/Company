@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 
 const SQRT_5000 = Math.sqrt(5000);
 
+import Image from "next/image";
 import { testimonials } from '@/constants/testimonials';
 
 interface TestimonialCardProps {
@@ -55,14 +56,16 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         }}
       />
       <div className="mb-4 sm:mb-6 relative">
-          <img
-            src={testimonial.imgSrc}
-            alt={`${testimonial.by.split(',')[0]}`}
-            className="h-12 w-10 sm:h-16 sm:w-14 bg-muted object-cover object-top rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
-            style={{
-              boxShadow: "4px 4px 0px rgba(0,0,0,0.5)"
-            }}
-          />
+          <div className="relative h-12 w-10 sm:h-16 sm:w-14 bg-muted rounded-lg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 shadow-[4px_4px_0px_rgba(0,0,0,0.5)]">
+            <Image
+              src={testimonial.imgSrc}
+              alt={`Testimonial from ${testimonial.by}`}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 640px) 40px, 56px"
+              loading="lazy"
+            />
+          </div>
       </div>
       <h3 className={cn(
         "text-base sm:text-2xl font-semibold leading-tight mb-3 sm:mb-4",

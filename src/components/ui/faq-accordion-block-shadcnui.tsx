@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
 import { Card } from "@/components/ui/card";
@@ -89,6 +90,9 @@ export function FAQAccordionBlock() {
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     className="flex w-full items-center justify-between p-5 text-left md:p-10 cursor-pointer"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-content-${index}`}
+                    id={`faq-button-${index}`}
                   >
                     <span className={cn(
                       "pr-4 md:pr-6 text-base font-heading font-bold transition-all md:text-2xl",
@@ -110,6 +114,9 @@ export function FAQAccordionBlock() {
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
+                        id={`faq-content-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-button-${index}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -136,9 +143,4 @@ export function FAQAccordionBlock() {
       </div>
     </section>
   );
-}
-
-// Helper function in case cn is not correctly set up for this specific file scope
-function cn(...inputs: any[]) {
-  return inputs.filter(Boolean).join(" ");
 }

@@ -9,7 +9,7 @@ export const Footer = () => {
             Webthism
           </div>
           
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+          <nav aria-label="Social links" className="flex flex-wrap justify-center gap-6 md:gap-10">
             {[
               { label: "Twitter", href: "https://x.com/webthism" },
               { label: "LinkedIn", href: "https://www.linkedin.com/in/aayush-kumar18/" },
@@ -21,12 +21,13 @@ export const Footer = () => {
                 href={social.href}
                 target={social.label !== "Email" ? "_blank" : undefined}
                 rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
+                aria-label={social.label}
                 className="font-sans text-xs text-muted-foreground tracking-[0.2em] uppercase hover:text-primary transition-all underline-offset-8 hover:underline"
               >
                 {social.label}
               </a>
             ))}
-          </div>
+          </nav>
           
           <div className="font-sans text-[10px] md:text-xs text-muted-foreground tracking-widest uppercase opacity-40">
             © 2026 Webthism. All Rights Reserved.

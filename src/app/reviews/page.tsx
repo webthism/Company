@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -14,7 +16,7 @@ export default function ReviewsPage() {
       
       <main className="pt-24 md:pt-32 pb-24 md:pb-48">
         {/* Hero Section */}
-        <section className="relative px-5 md:px-8 py-12 md:py-24 mb-10 md:mb-20 overflow-hidden text-center">
+        <header className="relative px-5 md:px-8 py-12 md:py-24 mb-10 md:mb-20 overflow-hidden text-center">
             {/* Background Effects */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#BD9DFF]/5 blur-[120px] -z-10 rounded-full opacity-30" />
@@ -38,7 +40,7 @@ export default function ReviewsPage() {
                     Don&apos;t take our word for it. Hear from the founders and CTOs who fired their old agencies and switched to Webthism.
                 </p>
             </motion.div>
-        </section>
+        </header>
 
         {/* Global Grid of Reviews */}
         <section className="max-w-7xl mx-auto px-5 md:px-8">
@@ -55,13 +57,13 @@ export default function ReviewsPage() {
                     >
                         {/* Quote Icon Glow */}
                         <div className="absolute -top-4 -right-4 text-[#BD9DFF]/5 group-hover:text-[#BD9DFF]/10 transition-colors">
-                            <Quote size={80} className="md:hidden" strokeWidth={3} />
-                            <Quote size={120} className="hidden md:block" strokeWidth={3} />
+                            <Quote size={80} className="md:hidden" strokeWidth={3} aria-hidden="true" />
+                            <Quote size={120} className="hidden md:block" strokeWidth={3} aria-hidden="true" />
                         </div>
                         
                         <div className="mb-5 md:mb-8 h-10 w-10 md:h-12 md:w-12 rounded-xl md:rounded-2xl bg-[#BD9DFF]/10 flex items-center justify-center text-[#BD9DFF] group-hover:bg-[#BD9DFF] group-hover:text-black transition-all duration-500">
-                            <Quote size={16} className="md:hidden" />
-                            <Quote size={20} className="hidden md:block" />
+                            <Quote size={16} className="md:hidden" aria-hidden="true" />
+                            <Quote size={20} className="hidden md:block" aria-hidden="true" />
                         </div>
 
                         <blockquote className="relative z-10 text-base md:text-xl font-heading font-medium leading-relaxed mb-8 md:mb-10 text-white/90 group-hover:text-white transition-colors">
@@ -69,8 +71,15 @@ export default function ReviewsPage() {
                         </blockquote>
 
                         <div className="flex items-center gap-4 md:gap-5 mt-auto">
-                            <div className="h-10 w-10 md:h-12 md:w-12 rounded-full overflow-hidden border-2 border-white/10 grayscale group-hover:grayscale-0 transition-all duration-500 flex-shrink-0">
-                                <img src={review.imgSrc} alt={review.by} className="w-full h-full object-cover" />
+                            <div className="relative h-10 w-10 md:h-12 md:w-12 rounded-full overflow-hidden border-2 border-white/10 grayscale group-hover:grayscale-0 transition-all duration-500 flex-shrink-0 bg-muted">
+                                <Image 
+                                  src={review.imgSrc} 
+                                  alt={`Photo of ${review.by}`} 
+                                  fill 
+                                  className="object-cover" 
+                                  sizes="48px"
+                                  priority={index < 3}
+                                />
                             </div>
                             <div className="min-w-0">
                                 <h4 className="font-heading font-bold text-sm md:text-base text-white group-hover:text-[#BD9DFF] transition-colors truncate">{review.by.split(',')[0]}</h4>
@@ -90,12 +99,12 @@ export default function ReviewsPage() {
             <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-2xl md:rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-2xl relative overflow-hidden group">
                  <div className="absolute inset-0 bg-gradient-to-br from-[#BD9DFF]/5 to-transparent opacity-50" />
                  <h2 className="relative z-10 font-heading text-2xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8">Ready to be our <span className="text-[#BD9DFF] italic font-serif">Next success</span> story?</h2>
-                 <a 
+                 <Link 
                     href="/#book" 
                     className="relative z-10 inline-flex px-8 md:px-12 py-4 md:py-5 bg-[#BD9DFF] text-black rounded-full font-heading font-black text-base md:text-xl hover:scale-105 transition-transform whitespace-nowrap"
                  >
                      Book Your Strategy Session
-                 </a>
+                 </Link>
             </div>
         </section>
       </main>

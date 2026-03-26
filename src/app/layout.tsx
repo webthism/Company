@@ -21,7 +21,53 @@ const pacifico = Pacifico({
 
 export const metadata: Metadata = {
   title: "Webthism | Premium Digital Craft Agency",
-  description: "Crafting extraordinary digital experiences in the void. A boutique creative studio focused on high-end web experiences.",
+  description: "Crafting extraordinary digital experiences in the void. A boutique creative studio focused on high-end web experiences, custom development, and conversion-optimized design.",
+  keywords: ["web design", "digital agency", "custom software", "next.js", "conversion optimization", "premium web development"],
+  authors: [{ name: "Webthism Team" }],
+  openGraph: {
+    title: "Webthism | Premium Digital Craft Agency",
+    description: "Crafting extraordinary digital experiences. High-end web development and conversion-optimized design.",
+    url: "https://webthism.com",
+    siteName: "Webthism",
+    images: [
+      {
+        url: "/og-image.png", // Assuming this exists or should be added
+        width: 1200,
+        height: 630,
+        alt: "Webthism - Digital Craft Agency",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Webthism | Premium Digital Craft Agency",
+    description: "Crafting extraordinary digital experiences. High-end web development and conversion-optimized design.",
+    images: ["/og-image.png"],
+  },
+  metadataBase: new URL("https://webthism.com"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#000000",
 };
 
 import { ThemeProvider } from "@/components/theme-provider";

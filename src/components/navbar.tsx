@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -56,33 +57,33 @@ export const Navbar = () => {
       )}
     >
         <div className="max-w-7xl mx-auto px-5 md:px-8 flex justify-between items-center">
-          <a href="/" className="text-2xl md:text-3xl font-normal font-logo text-white hover:opacity-80 transition-opacity z-50">
+          <Link href="/" className="text-2xl md:text-3xl font-normal font-logo text-white hover:opacity-80 transition-opacity z-50">
             Webthism
-          </a>
+          </Link>
           
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="font-heading font-bold tracking-tight text-xs uppercase text-muted-foreground hover:text-white transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="flex items-center gap-3">
             {/* Contact Button - always visible */}
-            <a href="/#book" className="hidden sm:block">
+            <Link href="/#book" className="hidden sm:block" aria-label="Book a strategy session">
               <Button
                 size="sm"
                 className="rounded-full px-6 md:px-8 bg-[#BD9DFF] text-black font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform text-xs"
               >
                 Contact
               </Button>
-            </a>
+            </Link>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -124,17 +125,20 @@ export const Navbar = () => {
               <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[60%] h-[30%] bg-[#BD9DFF]/10 blur-[120px] rounded-full pointer-events-none" />
               
               {navLinks.map((link, index) => (
-                <motion.a
+                <Link
                   key={link.href}
                   href={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15 + index * 0.1 }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="font-heading text-4xl font-black tracking-tighter text-white hover:text-[#BD9DFF] transition-colors"
                 >
-                  {link.label}
-                </motion.a>
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 + index * 0.1 }}
+                  >
+                    {link.label}
+                  </motion.span>
+                </Link>
               ))}
 
               <motion.div
@@ -143,14 +147,14 @@ export const Navbar = () => {
                 transition={{ delay: 0.45 }}
                 className="mt-4"
               >
-                <a href="/#book" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/#book" onClick={() => setIsMobileMenuOpen(false)} aria-label="Book a strategy session">
                   <Button
                     size="lg"
                     className="rounded-full px-12 h-14 bg-[#BD9DFF] text-black font-heading font-bold tracking-tight uppercase hover:scale-105 transition-transform text-base"
                   >
                     Contact Us
                   </Button>
-                </a>
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>

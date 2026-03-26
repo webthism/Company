@@ -15,8 +15,9 @@ export const Booking = () => {
         width="100%" 
         height="100%" 
         frameBorder="0"
+        loading="lazy"
         className="hidden md:block invert-[0.9] hue-rotate-180 brightness-110 contrast-110 grayscale-[0.2]"
-        title="Webthism Strategy Session Booking"
+        title="Webthism Strategy Session Booking Calendar"
       ></iframe>
 
       {/* Mobile: Show a clean card with CTA button instead of squished iframe */}
@@ -41,6 +42,7 @@ export const Booking = () => {
           href="https://calendar.app.google/VqvQhEfWUE6uPC5KA" 
           target="_blank" 
           rel="noopener noreferrer"
+          aria-label="Book your strategy session on Google Calendar"
           className="flex items-center justify-center gap-2 w-full max-w-xs bg-[#BD9DFF] text-black py-4 rounded-2xl font-heading font-black text-base shadow-[0_20px_40px_-10px_rgba(189,157,255,0.4)]"
         >
           Open Booking Calendar

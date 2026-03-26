@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { 
@@ -64,12 +65,13 @@ export default function ServicesPage() {
             <div className="max-w-4xl mx-auto p-10 md:p-20 rounded-2xl md:rounded-[4rem] bg-white/[0.01] border border-white/5 backdrop-blur-3xl relative overflow-hidden group">
                  <div className="absolute inset-0 bg-gradient-to-br from-[#BD9DFF]/10 to-transparent opacity-50" />
                  <h2 className="relative z-10 font-heading text-3xl sm:text-4xl md:text-7xl font-black mb-8 md:mb-12">The foundation <br /> of <span className="text-[#BD9DFF] italic font-serif">your growth.</span></h2>
-                 <a 
+                 <Link 
                     href="/#book" 
                     className="relative z-10 inline-flex px-8 md:px-14 py-4 md:py-6 bg-[#BD9DFF] text-black rounded-full font-heading font-black text-base md:text-xl hover:scale-110 shadow-[0_20px_60px_-15px_rgba(189,157,255,0.4)] transition-all whitespace-nowrap"
+                    aria-label="Book a free strategy session"
                  >
                      Book Your Strategy Session
-                 </a>
+                 </Link>
             </div>
         </section>
       </main>
