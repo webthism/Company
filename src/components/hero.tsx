@@ -2,25 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import Link from "next/link";
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // Optimization: Delay hydration-heavy interactive logic until main thread is idle
-    // This pushes TBT down significantly without breaking the animation functionality.
-    const handleIdle = (window as any).requestIdleCallback || ((cb: any) => setTimeout(cb, 50));
-    const idleId = handleIdle(() => {
-      setMounted(true);
-    });
-    return () => {
-      if ((window as any).cancelIdleCallback) (window as any).cancelIdleCallback(idleId);
-      else clearTimeout(idleId);
-    };
-  }, []);
+  // Optimization: isInteractive only becomes true on mouse move.
+  // This keeps the initial SSR/Hydration style 100% identical for a stable LCP.
+  const [isInteractive, setIsInteractive] = useState(false);
 
   // --- 3D Tilt Physics ---
   const mouseX = useMotionValue(0);
@@ -31,12 +20,13 @@ export const Hero = () => {
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!containerRef.current) return;
+    if (!isInteractive) setIsInteractive(true);
     const rect = containerRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     mouseX.set((e.clientX - centerX) / rect.width);
     mouseY.set((e.clientY - centerY) / rect.height);
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isInteractive]);
 
   const handleMouseLeave = useCallback(() => {
     mouseX.set(0);
@@ -62,39 +52,42 @@ export const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-[50%] md:w-[40%] h-[40%] bg-[#BD9DFF]/10 blur-[100px] md:blur-[150px] rounded-full animate-pulse delay-700" />
       </div>
 
-      {/* --- Floating 3D Content Card --- */}
+      {/* --- Stable 3D Content Card --- */}
+      {/* 
+        Optimization: We keep the card's base style constant across hydration.
+        Only when 'isInteractive' is true (mouse moved) do we merge the tilt values.
+        This provides a 100% consistent LCP paint that never shifts during the hydration phase.
+      */}
       <motion.div 
-        style={mounted ? { rotateX, rotateY, transformStyle: "preserve-3d" } : { transformStyle: "preserve-3d" }}
+        style={{ 
+          rotateX: isInteractive ? rotateX : 0, 
+          rotateY: isInteractive ? rotateY : 0, 
+          transformStyle: "preserve-3d" 
+        }}
         className="container mx-auto px-5 sm:px-6 relative z-10 py-6 md:py-10 rounded-3xl md:backdrop-blur-[2px] will-change-transform"
       >
         <div className="max-w-5xl mx-auto text-center" style={{ transformStyle: "preserve-3d" }}>
-          {/* Headline - CSS Powered Reveal for Instant LCP metrics */}
+          {/* Headline - CSS Reveal Layer for Zero-JS LCP */}
           <h1
-            style={mounted ? { transform: "translate3d(0, 0, 80px)", transformStyle: "preserve-3d" } : {}}
+            style={{ transform: "translate3d(0, 0, 80px)", transformStyle: "preserve-3d" }}
             className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] lcp-element"
           >
             Custom Websites That <br />
             Actually <span className="text-[#BD9DFF] italic font-serif">Convert</span>
           </h1>
           
-          {/* Subtitle - translate3d for better performance */}
-          <motion.p
-            initial={mounted ? { opacity: 0, y: 15 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={mounted ? { transform: "translate3d(0, 0, 40px)", transformStyle: "preserve-3d" } : {}}
-            className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2"
+          {/* Subtitle - Hardware Accelerated */}
+          <p
+            style={{ transform: "translate3d(0, 0, 40px)", transformStyle: "preserve-3d" }}
+            className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2 lcp-element [animation-delay:0.2s]"
           >
             We design, build, and scale high-performance digital experiences that turn visitors into loyal customers. No templates, just pure conversion.
-          </motion.p>
+          </p>
           
           {/* Action Buttons - Crawlable for SEO */}
-          <motion.div
-            initial={mounted ? { opacity: 0, y: 15 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{ transform: "translateZ(100px)" }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0"
+          <div
+            style={{ transform: "translate3d(0, 0, 100px)", transformStyle: "preserve-3d" }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0 lcp-element [animation-delay:0.4s]"
           >
             <Link href="/#blueprint" scroll={true} className="w-full sm:w-auto">
               <Button
@@ -113,7 +106,7 @@ export const Hero = () => {
                 View Our Work
               </Button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
