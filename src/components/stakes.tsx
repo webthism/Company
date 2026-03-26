@@ -23,18 +23,18 @@ export const Stakes = () => {
   ];
 
   return (
-    <section className="py-32 bg-black border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-8 text-center">
-        <h2 className="font-heading text-4xl md:text-7xl font-black tracking-tighter mb-12">
+    <section className="py-16 md:py-32 bg-black border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 text-center">
+        <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-6 md:mb-12">
           What Is Your <span className="text-destructive italic font-serif">Weak Website</span> <br />
           Costing You?
         </h2>
         
-        <p className="max-w-2xl mx-auto text-muted-foreground text-lg mb-20 font-sans font-light">
-          Losing customers because of slow loading or bad design? Here’s the reality of a sub-par digital presence.
+        <p className="max-w-2xl mx-auto text-muted-foreground text-base md:text-lg mb-12 md:mb-20 font-sans font-light px-2">
+          Losing customers because of slow loading or bad design? Here's the reality of a sub-par digital presence.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 text-left">
           {stakes.map((stake, index) => (
             <motion.div
               key={stake.title}
@@ -42,13 +42,14 @@ export const Stakes = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-zinc-900/40 p-10 rounded-3xl border border-white/5"
+              className="bg-zinc-900/40 p-7 md:p-10 rounded-2xl md:rounded-3xl border border-white/5"
             >
-              <div className="mb-6 w-12 h-12 rounded-2xl flex items-center justify-center bg-destructive/10 text-destructive">
-                <stake.icon size={24} />
+              <div className="mb-4 md:mb-6 w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center bg-destructive/10 text-destructive">
+                <stake.icon size={20} className="md:hidden" />
+                <stake.icon size={24} className="hidden md:block" />
               </div>
-              <h3 className="font-heading text-2xl font-bold mb-4">{stake.title}</h3>
-              <p className="text-muted-foreground font-sans font-light leading-relaxed">
+              <h3 className="font-heading text-xl md:text-2xl font-bold mb-3 md:mb-4">{stake.title}</h3>
+              <p className="text-muted-foreground font-sans font-light leading-relaxed text-sm md:text-base">
                 {stake.description}
               </p>
             </motion.div>

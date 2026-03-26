@@ -14,20 +14,20 @@ export const LeadMagnet = () => {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <section className="relative py-48 bg-black overflow-hidden border-t border-white/5">
+    <section className="relative py-20 md:py-48 bg-black overflow-hidden border-t border-white/5">
       {/* Immersive Background Elements */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#BD9DFF]/5 blur-[160px] -z-10 rounded-full opacity-30" />
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
           >
-            <div className="mb-10 inline-flex items-center gap-3 px-5 py-2.5 bg-white/[0.03] rounded-full text-[#BD9DFF] border border-white/10 backdrop-blur-md">
+            <div className="mb-6 md:mb-10 inline-flex items-center gap-3 px-4 md:px-5 py-2 md:py-2.5 bg-white/[0.03] rounded-full text-[#BD9DFF] border border-white/10 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#BD9DFF] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#BD9DFF]"></span>
@@ -35,21 +35,21 @@ export const LeadMagnet = () => {
               <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Free Resource</span>
             </div>
             
-            <h2 className="font-heading text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-10 text-white leading-[0.9]">
+            <h2 className="font-heading text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter mb-6 md:mb-10 text-white leading-[0.9]">
               The 2026 <br />
               <span className="text-[#BD9DFF] italic font-serif">Growth</span> <br />
               Blueprint
             </h2>
             
-            <p className="text-[#A1A1AA] text-xl font-sans font-extralight mb-16 max-w-lg leading-relaxed italic opacity-80">
-              Discover the exact "conversion-first" framework we use to build 7-figure digital ecosystems for our partners.
+            <p className="text-[#A1A1AA] text-base md:text-xl font-sans font-extralight mb-8 md:mb-16 max-w-lg leading-relaxed italic opacity-80">
+              Discover the exact &quot;conversion-first&quot; framework we use to build 7-figure digital ecosystems for our partners.
             </p>
             
-            <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl relative overflow-hidden group shadow-2xl">
+            <div className="p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl relative overflow-hidden group shadow-2xl">
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#BD9DFF]/10 blur-[80px] rounded-full group-hover:bg-[#BD9DFF]/20 transition-colors duration-700" />
               
               <Form 
-                className="gap-6" 
+                className="gap-4 md:gap-6" 
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setIsSubmitting(true);
@@ -75,7 +75,7 @@ export const LeadMagnet = () => {
                   }
                 }}
               >
-                <div className="grid grid-cols-1 gap-6">
+                <div className="grid grid-cols-1 gap-4 md:gap-6">
                   <Field name="name">
                     <FieldLabel className="text-[#BD9DFF]">Full Name</FieldLabel>
                     <Input name="name" placeholder="Jane Doe" required className="border-white/5 bg-white/5" />
@@ -89,7 +89,7 @@ export const LeadMagnet = () => {
                 
                 <FormButton 
                   type="submit" 
-                  className="w-full mt-4 h-16 text-xl"
+                  className="w-full mt-3 md:mt-4 h-12 md:h-16 text-base md:text-xl"
                   loading={isSubmitting}
                   disabled={isSuccess}
                 >

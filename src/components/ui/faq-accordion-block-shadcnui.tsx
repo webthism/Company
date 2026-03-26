@@ -44,7 +44,7 @@ export function FAQAccordionBlock() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="w-full bg-black px-4 py-32 md:py-48 relative overflow-hidden">
+    <section className="w-full bg-black px-4 py-16 md:py-48 relative overflow-hidden">
       {/* Background Aura */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#BD9DFF]/5 blur-[160px] -z-10 rounded-full opacity-30" />
       
@@ -55,22 +55,22 @@ export function FAQAccordionBlock() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16 text-center md:mb-24"
+          className="mb-10 text-center md:mb-24"
         >
-          <Badge className="mb-6 bg-[#BD9DFF]/20 text-[#BD9DFF] border-[#BD9DFF]/20 px-4 py-1.5" variant="secondary">
-            <HelpCircle className="mr-2 h-3.5 w-3.5" />
+          <Badge className="mb-4 md:mb-6 bg-[#BD9DFF]/20 text-[#BD9DFF] border-[#BD9DFF]/20 px-3 md:px-4 py-1 md:py-1.5 text-xs" variant="secondary">
+            <HelpCircle className="mr-2 h-3 w-3 md:h-3.5 md:w-3.5" />
             Clear Answers
           </Badge>
-          <h2 className="mb-8 font-heading text-4xl font-black tracking-tighter md:text-7xl text-white">
+          <h2 className="mb-5 md:mb-8 font-heading text-3xl font-black tracking-tighter sm:text-5xl md:text-7xl text-white">
             Frequently Asked <span className="text-[#BD9DFF] italic font-serif">Questions</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-[#A1A1AA] font-sans font-extralight italic">
+          <p className="mx-auto max-w-2xl text-sm md:text-lg text-[#A1A1AA] font-sans font-extralight italic px-2">
             Everything you need to know about partnering with Webthism. Transparent, direct, and focused on your growth.
           </p>
         </motion.div>
 
         {/* FAQ Accordion */}
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
@@ -83,15 +83,15 @@ export function FAQAccordionBlock() {
                 viewport={{ once: true }}
               >
                 <Card className={cn(
-                  "overflow-hidden border-white/5 bg-white/[0.02] transition-all duration-500 rounded-[2rem]",
+                  "overflow-hidden border-white/5 bg-white/[0.02] transition-all duration-500 rounded-xl md:rounded-[2rem]",
                   isOpen ? "border-[#BD9DFF]/30 bg-white/[0.04]" : "hover:border-white/20"
                 )}>
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="flex w-full items-center justify-between p-6 text-left md:p-10 cursor-pointer"
+                    className="flex w-full items-center justify-between p-5 text-left md:p-10 cursor-pointer"
                   >
                     <span className={cn(
-                      "pr-6 text-lg font-heading font-bold transition-all md:text-2xl",
+                      "pr-4 md:pr-6 text-base font-heading font-bold transition-all md:text-2xl",
                       isOpen ? "text-[#BD9DFF]" : "text-white"
                     )}>
                       {faq.question}
@@ -101,7 +101,7 @@ export function FAQAccordionBlock() {
                       className="flex-shrink-0"
                     >
                       <ChevronDown className={cn(
-                        "h-6 w-6 transition-colors",
+                        "h-5 w-5 md:h-6 md:w-6 transition-colors",
                         isOpen ? "text-[#BD9DFF]" : "text-[#A1A1AA]"
                       )} />
                     </motion.div>
@@ -116,11 +116,11 @@ export function FAQAccordionBlock() {
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="border-t border-white/5 p-6 md:p-10 pt-0">
+                        <div className="border-t border-white/5 p-5 md:p-10 pt-0">
                           <motion.p
                             initial={{ y: -10 }}
                             animate={{ y: 0 }}
-                            className="text-base text-[#A1A1AA] font-sans font-light leading-relaxed md:text-xl"
+                            className="text-sm text-[#A1A1AA] font-sans font-light leading-relaxed md:text-xl"
                           >
                             {faq.answer}
                           </motion.p>

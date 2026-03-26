@@ -31,32 +31,33 @@ export const Popup = () => {
           initial={{ opacity: 0, scale: 0.5, y: 100 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 100 }}
-          className="fixed bottom-10 right-10 z-[100] max-w-sm w-full"
+          className="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-10 sm:right-10 z-[100] sm:max-w-sm w-auto sm:w-full"
         >
-          <div className="bg-zinc-900 border border-white/10 p-8 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+          <div className="bg-zinc-900 border border-white/10 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] shadow-2xl relative overflow-hidden group">
             <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             
             <button 
               onClick={closePopup}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-muted-foreground hover:text-white transition-colors p-1"
             >
               <X size={20} />
             </button>
 
-            <div className="mb-6 w-12 h-12 rounded-2xl flex items-center justify-center bg-primary/20 text-primary">
-              <Gift size={24} />
+            <div className="mb-4 sm:mb-6 w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center bg-primary/20 text-primary">
+              <Gift size={20} className="sm:hidden" />
+              <Gift size={24} className="hidden sm:block" />
             </div>
 
-            <h3 className="font-heading text-2xl font-black tracking-tighter mb-4 text-white">
+            <h3 className="font-heading text-xl sm:text-2xl font-black tracking-tighter mb-3 sm:mb-4 text-white pr-6">
               Claim Your Free <br /> Website Audit
             </h3>
             
-            <p className="text-muted-foreground font-sans text-sm mb-8 leading-relaxed">
-              Limited slots available this week! Get a expert breakdown of your site's performance and conversion potential.
+            <p className="text-muted-foreground font-sans text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed">
+              Limited slots available this week! Get a expert breakdown of your site&apos;s performance and conversion potential.
             </p>
 
             <Button
-              className="w-full py-6 rounded-xl font-heading font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform"
+              className="w-full py-5 sm:py-6 rounded-xl font-heading font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform text-sm sm:text-base"
               onClick={() => {
                 window.location.href = "#book";
                 closePopup();

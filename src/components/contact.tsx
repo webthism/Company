@@ -35,20 +35,20 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 md:py-64 bg-background">
-      <div className="max-w-4xl mx-auto px-8 text-center">
+    <section id="contact" className="py-20 md:py-64 bg-background">
+      <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
         <motion.h2
           initial={{ opacity: 0, scale: 1.1 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "circOut" }}
           viewport={{ once: true }}
-          className="font-heading text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter mb-12"
+          className="font-heading text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter mb-6 md:mb-12"
         >
           Ready to <br /> Start?
         </motion.h2>
         
-        <p className="text-muted-foreground text-xl md:text-2xl mb-16 font-sans font-extralight max-w-2xl mx-auto">
-          Let's discuss how we can elevate your brand into the next dimension of digital excellence.
+        <p className="text-muted-foreground text-base md:text-2xl mb-10 md:mb-16 font-sans font-extralight max-w-2xl mx-auto px-2">
+          Let&apos;s discuss how we can elevate your brand into the next dimension of digital excellence.
         </p>
         
         <motion.form
@@ -57,7 +57,7 @@ export const Contact = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
           onSubmit={handleSubmit}
-          className="flex flex-col md:flex-row gap-6 max-w-3xl mx-auto items-center"
+          className="flex flex-col gap-4 md:flex-row md:gap-6 max-w-3xl mx-auto items-stretch md:items-center"
         >
           <div className="flex-1 relative group w-full">
             <Input
@@ -66,14 +66,14 @@ export const Contact = () => {
               placeholder={status === "success" ? "Received!" : "Enter your email"}
               disabled={status === "success" || status === "submitting"}
               required
-              className="h-20 bg-card/60 backdrop-blur-xl border border-white/10 rounded-full px-10 text-xl font-sans font-light focus:ring-primary focus:border-primary focus:ring-2 transition-all"
+              className="h-14 md:h-20 bg-card/60 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-10 text-base md:text-xl font-sans font-light focus:ring-primary focus:border-primary focus:ring-2 transition-all"
             />
           </div>
           <Button
             size="lg"
             type="submit"
             disabled={status === "success" || status === "submitting"}
-            className="h-20 px-12 bg-white text-black hover:bg-primary hover:text-on-primary rounded-full font-heading font-black text-xl transition-all whitespace-nowrap min-w-[200px] flex items-center justify-center"
+            className="h-14 md:h-20 px-8 md:px-12 bg-white text-black hover:bg-primary hover:text-on-primary rounded-full font-heading font-black text-base md:text-xl transition-all whitespace-nowrap min-w-[160px] md:min-w-[200px] flex items-center justify-center"
           >
             {status === "submitting" ? (
               <Loader2 className="animate-spin" />

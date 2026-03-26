@@ -27,7 +27,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border-2 p-8 transition-all duration-500 ease-in-out",
+        "absolute left-1/2 top-1/2 cursor-pointer border-2 p-5 sm:p-8 transition-all duration-500 ease-in-out",
         isCenter 
           ? "z-10 bg-[#BD9DFF] text-black border-[#BD9DFF]" 
           : "z-0 bg-[#0B0B0B] text-white/80 border-white/10 hover:border-[#BD9DFF]/50 backdrop-blur-md"
@@ -35,7 +35,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       style={{
         width: cardSize,
         height: cardSize,
-        clipPath: `polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0)`,
+        clipPath: `polygon(${cardSize < 300 ? '30px' : '50px'} 0%, calc(100% - ${cardSize < 300 ? '30px' : '50px'}) 0%, 100% ${cardSize < 300 ? '30px' : '50px'}, 100% 100%, calc(100% - ${cardSize < 300 ? '30px' : '50px'}) 100%, ${cardSize < 300 ? '30px' : '50px'} 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%) 
           translateX(${(cardSize / 1.5) * position}px)
@@ -49,29 +49,29 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         className="absolute block origin-top-right rotate-45 bg-white/10"
         style={{
           right: -2,
-          top: 48,
+          top: cardSize < 300 ? 28 : 48,
           width: SQRT_5000,
           height: 2
         }}
       />
-      <div className="mb-6 relative">
+      <div className="mb-4 sm:mb-6 relative">
           <img
             src={testimonial.imgSrc}
             alt={`${testimonial.by.split(',')[0]}`}
-            className="h-16 w-14 bg-muted object-cover object-top rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
+            className="h-12 w-10 sm:h-16 sm:w-14 bg-muted object-cover object-top rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
             style={{
               boxShadow: "4px 4px 0px rgba(0,0,0,0.5)"
             }}
           />
       </div>
       <h3 className={cn(
-        "text-lg sm:text-2xl font-semibold leading-tight mb-4",
+        "text-base sm:text-2xl font-semibold leading-tight mb-3 sm:mb-4",
         isCenter ? "text-black" : "text-white"
       )}>
-        "{testimonial.testimonial}"
+        &quot;{testimonial.testimonial}&quot;
       </h3>
       <p className={cn(
-        "absolute bottom-8 left-8 right-8 mt-2 text-sm italic font-sans",
+        "absolute bottom-5 sm:bottom-8 left-5 sm:left-8 right-5 sm:right-8 mt-2 text-xs sm:text-sm italic font-sans",
         isCenter ? "text-black/70" : "text-[#A1A1AA]"
       )}>
         — {testimonial.by}
@@ -104,8 +104,14 @@ export const StaggerTestimonials: React.FC = () => {
 
   useEffect(() => {
     const updateSize = () => {
-      const { matches } = window.matchMedia("(min-width: 640px)");
-      setCardSize(matches ? 365 : 290);
+      const width = window.innerWidth;
+      if (width < 400) {
+        setCardSize(240);
+      } else if (width < 640) {
+        setCardSize(270);
+      } else {
+        setCardSize(365);
+      }
     };
 
     updateSize();
@@ -115,11 +121,11 @@ export const StaggerTestimonials: React.FC = () => {
 
   return (
     <div
-      className="relative w-full overflow-hidden bg-black py-20"
-      style={{ height: 750 }}
+      className="relative w-full overflow-hidden bg-black py-10 sm:py-20"
+      style={{ height: cardSize < 300 ? 500 : 750 }}
     >
         {/* Background Grid - Matching Global Style */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)] pointer-events-none" />
 
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2
@@ -137,24 +143,26 @@ export const StaggerTestimonials: React.FC = () => {
       })}
       
       {/* Custom Controls */}
-      <div className="absolute bottom-12 left-1/2 flex -translate-x-1/2 gap-4 z-20">
+      <div className="absolute bottom-6 sm:bottom-12 left-1/2 flex -translate-x-1/2 gap-3 sm:gap-4 z-20">
         <button
           onClick={() => handleMove(-1)}
           className={cn(
-            "flex h-16 w-16 items-center justify-center text-2xl transition-all rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-white hover:bg-[#BD9DFF] hover:text-black hover:border-[#BD9DFF] shadow-xl"
+            "flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center text-xl transition-all rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-white hover:bg-[#BD9DFF] hover:text-black hover:border-[#BD9DFF] shadow-xl"
           )}
           aria-label="Previous testimonial"
         >
-          <ChevronLeft />
+          <ChevronLeft size={20} className="sm:hidden" />
+          <ChevronLeft size={24} className="hidden sm:block" />
         </button>
         <button
           onClick={() => handleMove(1)}
           className={cn(
-            "flex h-16 w-16 items-center justify-center text-2xl transition-all rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-white hover:bg-[#BD9DFF] hover:text-black hover:border-[#BD9DFF] shadow-xl"
+            "flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center text-xl transition-all rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-white hover:bg-[#BD9DFF] hover:text-black hover:border-[#BD9DFF] shadow-xl"
           )}
           aria-label="Next testimonial"
         >
-          <ChevronRight />
+          <ChevronRight size={20} className="sm:hidden" />
+          <ChevronRight size={24} className="hidden sm:block" />
         </button>
       </div>
     </div>

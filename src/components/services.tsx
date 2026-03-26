@@ -32,28 +32,28 @@ export const Services = () => {
   ];
 
   return (
-    <section id="benefits" className="relative py-32 bg-black overflow-hidden">
+    <section id="benefits" className="relative py-16 md:py-32 bg-black overflow-hidden">
       {/* Matching Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_95%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_95%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <div className="mb-24 flex flex-col items-center gap-6">
+      <div className="max-w-7xl mx-auto px-5 md:px-6 relative z-10 text-center">
+        <div className="mb-12 md:mb-24 flex flex-col items-center gap-4 md:gap-6">
           <div className="max-w-3xl">
             <motion.h2 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="font-heading text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-8 text-white"
+              className="font-heading text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter mb-5 md:mb-8 text-white"
             >
               The Value <span className="text-[#BD9DFF] italic font-serif">Stack</span>
             </motion.h2>
-            <p className="text-[#A1A1AA] text-lg md:text-xl font-sans font-light leading-relaxed">
+            <p className="text-[#A1A1AA] text-base md:text-xl font-sans font-light leading-relaxed px-2">
               We focus on the metrics that matter. Our websites are built to be your most powerful marketing asset.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -66,20 +66,21 @@ export const Services = () => {
                 boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
               }}
               viewport={{ once: true }}
-              className="relative group p-12 lg:p-16 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-[#BD9DFF]/30 transition-all duration-500 overflow-hidden"
+              className="relative group p-8 md:p-12 lg:p-16 rounded-2xl md:rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-[#BD9DFF]/30 transition-all duration-500 overflow-hidden text-left"
             >
               {/* Inner Glow */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 blur-[60px] rounded-full group-hover:bg-[#BD9DFF]/10 transition-colors duration-500" />
               
-              <div className={`mb-10 w-20 h-20 rounded-3xl flex items-center justify-center bg-white/5 border border-white/10 ${service.color} group-hover:scale-110 transition-transform duration-500`}>
-                <service.icon size={36} strokeWidth={1.2} />
+              <div className={`mb-6 md:mb-10 w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center bg-white/5 border border-white/10 ${service.color} group-hover:scale-110 transition-transform duration-500`}>
+                <service.icon size={28} className="md:hidden relative z-10" strokeWidth={1.2} />
+                <service.icon size={36} className="hidden md:block relative z-10" strokeWidth={1.2} />
               </div>
               
-              <h3 className="font-heading text-3xl font-bold mb-6 text-white group-hover:text-[#BD9DFF] transition-colors">
+              <h3 className="font-heading text-xl md:text-3xl font-bold mb-3 md:mb-6 text-white group-hover:text-[#BD9DFF] transition-colors">
                 {service.title}
               </h3>
               
-              <p className="text-[#A1A1AA] leading-relaxed text-lg font-sans font-light group-hover:text-white/80 transition-colors">
+              <p className="text-[#A1A1AA] leading-relaxed text-sm md:text-lg font-sans font-light group-hover:text-white/80 transition-colors">
                 {service.description}
               </p>
             </motion.div>
@@ -89,4 +90,3 @@ export const Services = () => {
     </section>
   );
 };
-

@@ -3,13 +3,13 @@
 export const Footer = () => {
   return (
     <footer className="bg-black w-full border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-8 py-24">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="text-3xl font-normal font-logo text-white">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 py-12 md:py-24">
+        <div className="flex flex-col items-center gap-8 md:gap-10 md:flex-row md:justify-between">
+          <div className="text-2xl md:text-3xl font-normal font-logo text-white">
             Webthism
           </div>
           
-          <div className="flex flex-wrap justify-center gap-10">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
             {["Twitter", "LinkedIn", "Instagram", "Email"].map((social) => (
               <a
                 key={social}
@@ -21,7 +21,7 @@ export const Footer = () => {
             ))}
           </div>
           
-          <div className="font-sans text-xs text-muted-foreground tracking-widest uppercase opacity-40">
+          <div className="font-sans text-[10px] md:text-xs text-muted-foreground tracking-widest uppercase opacity-40">
             © 2026 Webthism. All Rights Reserved.
           </div>
         </div>
