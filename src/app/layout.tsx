@@ -23,21 +23,21 @@ const pacifico = Pacifico({
 });
 
 export const metadata: Metadata = {
-  title: "Webthism | Premium Digital Craft Agency",
-  description: "Crafting extraordinary digital experiences in the void. A boutique creative studio focused on high-end web experiences, custom development, and conversion-optimized design.",
-  keywords: ["web design", "digital agency", "custom software", "next.js", "conversion optimization", "premium web development"],
+  title: "Webthism — Custom Digital Alchemy for the Bold",
+  description: "We design, build, and scale high-performance digital experiences that convert. No templates, just pure conversion. Elevate your brand with award-winning design and futuristic tech.",
+  keywords: ["premium web development", "conversion optimization", "custom next.js apps", "digital craft agency", "bespoke design", "high-end ux"],
   authors: [{ name: "Webthism Team" }],
   openGraph: {
-    title: "Webthism | Premium Digital Craft Agency",
-    description: "Crafting extraordinary digital experiences. High-end web development and conversion-optimized design.",
+    title: "Webthism — High-Performance Digital Alchemy",
+    description: "Crafting extraordinary digital experiences that turn visitors into loyal customers. Premium, custom-coded, and built to scale.",
     url: "https://webthism.com",
     siteName: "Webthism",
     images: [
       {
-        url: "/og-image.png", // Assuming this exists or should be added
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Webthism - Digital Craft Agency",
+        alt: "Webthism — High-Performance Digital Alchemy",
       },
     ],
     locale: "en_US",
@@ -45,9 +45,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Webthism | Premium Digital Craft Agency",
-    description: "Crafting extraordinary digital experiences. High-end web development and conversion-optimized design.",
+    title: "Webthism — Custom Digital Alchemy for the Bold",
+    description: "Stop using templates. Scale your brand with high-performance digital experiences that actually convert.",
     images: ["/og-image.png"],
+    creator: "@webthism", // Replace with your actual handle if different
   },
   metadataBase: new URL("https://webthism.com"),
   alternates: {
@@ -87,8 +88,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Google Analytics Placeholder */}
-        {/* Google Analytics - Updated with Correct Measurement ID */}
+        {/* Google Analytics - Corrected and moved to top of head */}
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-KGPE4FTQ8D`}
@@ -98,9 +98,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-KGPE4FTQ8D', {
-              page_path: window.location.pathname,
-            });
+            gtag('config', 'G-KGPE4FTQ8D');
           `}
         </Script>
 
