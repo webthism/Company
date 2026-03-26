@@ -13,13 +13,11 @@ const Testimonials = dynamic(() => import("@/components/testimonials").then(m =>
 });
 const Process = dynamic(() => import("@/components/process").then(m => m.Process));
 const LeadMagnet = dynamic(() => import("@/components/lead-magnet").then(m => m.LeadMagnet));
-const Booking = dynamic(() => import("@/components/booking").then(m => m.Booking), {
-    ssr: false // Often contains calendars/3rd party scripts that prefer client-side
-});
+const Booking = dynamic(() => import("@/components/booking").then(m => m.Booking));
 const FAQAccordionBlock = dynamic(() => import("@/components/ui/faq-accordion-block-shadcnui").then(m => m.FAQAccordionBlock));
 const Contact = dynamic(() => import("@/components/contact").then(m => m.Contact));
 const Footer = dynamic(() => import("@/components/footer").then(m => m.Footer));
-const Popup = dynamic(() => import("@/components/popup").then(m => m.Popup), { ssr: false });
+const Popup = dynamic(() => import("@/components/popup").then(m => m.Popup));
 
 export default function Home() {
   return (
