@@ -10,13 +10,20 @@ export const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-            {["Twitter", "LinkedIn", "Instagram", "Email"].map((social) => (
+            {[
+              { label: "Twitter", href: "https://x.com/webthism" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/aayush-kumar18/" },
+              { label: "Instagram", href: "https://www.instagram.com/webthism" },
+              { label: "Email", href: "mailto:admin@webthism.com" }
+            ].map((social) => (
               <a
-                key={social}
-                href="#"
+                key={social.label}
+                href={social.href}
+                target={social.label !== "Email" ? "_blank" : undefined}
+                rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
                 className="font-sans text-xs text-muted-foreground tracking-[0.2em] uppercase hover:text-primary transition-all underline-offset-8 hover:underline"
               >
-                {social}
+                {social.label}
               </a>
             ))}
           </div>
