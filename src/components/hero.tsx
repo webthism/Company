@@ -12,7 +12,7 @@ export const Hero = () => {
     setMounted(true);
   }, []);
 
-  // --- 3D Tilt Physics --- (Progressive enhancement, only if JS is ready)
+  // --- 3D Tilt Physics ---
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -40,7 +40,7 @@ export const Hero = () => {
       onMouseLeave={handleMouseLeave}
       className="relative min-h-[100svh] pt-20 md:pt-24 flex flex-col items-center justify-center overflow-hidden bg-black selection:bg-primary/30 [perspective:1200px]"
     >
-      {/* --- Dynamic 3D Environment (CSS-driven for performance) --- */}
+      {/* --- Dynamic 3D Environment --- */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* 3D Floor Grid */}
         <div 
@@ -57,23 +57,40 @@ export const Hero = () => {
         style={mounted ? { rotateX, rotateY, transformStyle: "preserve-3d" } : { transformStyle: "preserve-3d" }}
         className="container mx-auto px-5 sm:px-6 relative z-10 py-6 md:py-10 rounded-3xl md:backdrop-blur-[2px] will-change-transform"
       >
-        <div className="max-w-5xl mx-auto text-center" style={{ transform: mounted ? "translateZ(50px)" : "none" }}>
-          {/* Headline - Instant LCP - No entrance animation */}
-          <h1 className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform-gpu">
+        <div className="max-w-5xl mx-auto text-center" style={{ transformStyle: "preserve-3d" }}>
+          {/* Headline - Added translateZ for proper 3D depth */}
+          <motion.h1
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ transform: "translateZ(80px)" }}
+            className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+          >
             Custom Websites That <br />
             Actually <span className="text-[#BD9DFF] italic font-serif">Convert</span>
-          </h1>
+          </motion.h1>
           
-          {/* Subtitle - Static for instant reading */}
-          <p className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2 transform-gpu">
+          {/* Subtitle - Added translateZ */}
+          <motion.p
+            initial={mounted ? { opacity: 0, y: 15 } : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ transform: "translateZ(40px)" }}
+            className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2"
+          >
             We design, build, and scale high-performance digital experiences that turn visitors into loyal customers. No templates, just pure conversion.
-          </p>
+          </motion.p>
           
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0">
+          {/* Action Buttons - Added translateZ */}
+          <motion.div
+            initial={mounted ? { opacity: 0, y: 15 } : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            style={{ transform: "translateZ(100px)" }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0"
+          >
             <Button
               size="lg"
-              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.05] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.3)]"
+              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
               onClick={() => document.getElementById('blueprint')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Free Website Checklist
@@ -81,12 +98,12 @@ export const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.05] active:scale-[0.95]"
+              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
               onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
             >
               View Our Work
             </Button>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>
