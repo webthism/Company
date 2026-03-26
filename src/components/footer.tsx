@@ -15,13 +15,14 @@ export const Footer = () => {
               { label: "LinkedIn", href: "https://www.linkedin.com/in/aayush-kumar18/" },
               { label: "Instagram", href: "https://www.instagram.com/webthism" },
               { label: "Privacy", href: "/privacy" },
+              { label: "Support", href: "/support" },
               { label: "Email", href: "mailto:admin@webthism.com" }
             ].map((social) => (
               <a
                 key={social.label}
                 href={social.href}
-                target={social.label !== "Email" && social.label !== "Privacy" ? "_blank" : undefined}
-                rel={social.label !== "Email" && social.label !== "Privacy" ? "noopener noreferrer" : undefined}
+                target={social.label !== "Email" && social.label !== "Privacy" && social.label !== "Support" ? "_blank" : undefined}
+                rel={social.label !== "Email" && social.label !== "Privacy" && social.label !== "Support" ? "noopener noreferrer" : undefined}
                 aria-label={social.label}
                 className="font-sans text-xs text-muted-foreground tracking-[0.2em] uppercase hover:text-primary transition-all underline-offset-8 hover:underline"
               >
