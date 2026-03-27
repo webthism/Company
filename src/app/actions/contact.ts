@@ -85,6 +85,25 @@ export async function submitProjectLead(email: string) {
       return { error: error.message };
     }
 
+    // 3. Notify Admin (admin@webthism.com)
+    await resend.emails.send({
+      from: "Project Alerts <admin@webthism.com>",
+      to: ["admin@webthism.com"],
+      subject: "New Project Inquiry! (Ready to Start)",
+      html: `
+        <div style="font-family: sans-serif; background-color: #000; color: #fff; padding: 40px; border-radius: 12px; border: 1px solid #27272a;">
+          <h2 style="color: #BD9DFF;">New Detail: Ready to Start Container</h2>
+          <p>A new user just entered their details in the project section. Details:</p>
+          <ul style="list-style: none; padding: 0;">
+            <li><strong>Email:</strong> ${email}</li>
+            <li><strong>Time:</strong> ${new Date().toLocaleString()}</li>
+          </ul>
+          <hr style="border-top: 1px solid #27272a; margin: 20px 0;">
+          <p style="font-size: 12px; color: #a1a1aa;">Sent via Webthism Platform Notification System</p>
+        </div>
+      `,
+    });
+
     return { success: true, data };
   } catch (err: any) {
     console.error("Resend Exception:", err);

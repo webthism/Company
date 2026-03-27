@@ -63,6 +63,26 @@ export async function sendBlueprintAccess(email: string, name: string) {
       return { error: error.message };
     }
 
+    // 3. Notify Admin (admin@webthism.com)
+    await resend.emails.send({
+      from: "Blueprint Alerts <blueprint@webthism.com>",
+      to: ["admin@webthism.com"],
+      subject: "New Growth Blueprint Request!",
+      html: `
+        <div style="font-family: sans-serif; background-color: #000; color: #fff; padding: 40px; border-radius: 12px; border: 1px solid #27272a;">
+          <h2 style="color: #BD9DFF;">New Lead: 2026 Growth Blueprint</h2>
+          <p>A new user just requested the blueprint. Details:</p>
+          <ul style="list-style: none; padding: 0;">
+            <li><strong>Name:</strong> ${name}</li>
+            <li><strong>Email:</strong> ${email}</li>
+            <li><strong>Time:</strong> ${new Date().toLocaleString()}</li>
+          </ul>
+          <hr style="border-top: 1px solid #27272a; margin: 20px 0;">
+          <p style="font-size: 12px; color: #a1a1aa;">Sent via Webthism Platform Notification System</p>
+        </div>
+      `,
+    });
+
     return { success: true, data };
   } catch (err: any) {
     console.error("Server Action Exception:", err);
