@@ -118,6 +118,18 @@ export default function RootLayout({
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
           `}
         </Script>
+        {/* Apollo Tracking Script */}
+        <Script id="apollo-tracker" strategy="afterInteractive">
+          {`
+            function initApollo(){
+              var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+              o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+              o.onload=function(){window.trackingFunctions.onLoad({appId:"69b791bcfae0f5001db5021c"})},
+              document.head.appendChild(o)
+            }
+            initApollo();
+          `}
+        </Script>
       </head>
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
