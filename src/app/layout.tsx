@@ -91,6 +91,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <Script id="name-polyfill" strategy="beforeInteractive">
+          {`window.__name = (target, value) => Object.defineProperty(target, "name", { value, configurable: true });`}
+        </Script>
         {/* Google Analytics - Corrected and moved to top of head */}
         <Script
           strategy="afterInteractive"
@@ -124,7 +127,13 @@ export default function RootLayout({
             function initApollo(){
               var n=Math.random().toString(36).substring(7),o=document.createElement("script");
               o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-              o.onload=function(){window.trackingFunctions.onLoad({appId:"69b791bcfae0f5001db5021c"})},
+              o.onload=function(){
+                if(window.trackingFunctions) {
+                  window.trackingFunctions.onLoad({appId:"69b791bcfae0f5001db5021c"});
+                } else if (window.apollo) {
+                   window.apollo.init({appId:"69b791bcfae0f5001db5021c"});
+                }
+              },
               document.head.appendChild(o)
             }
             initApollo();
