@@ -11,6 +11,7 @@ export const Footer = () => {
           
           <nav aria-label="Social links" className="flex flex-wrap justify-center gap-6 md:gap-10">
             {[
+              { label: "Work", href: "/work" },
               { label: "Twitter", href: "https://x.com/webthism" },
               { label: "LinkedIn", href: "https://www.linkedin.com/in/aayush-kumar18/" },
               { label: "Instagram", href: "https://www.instagram.com/webthism" },

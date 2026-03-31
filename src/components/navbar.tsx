@@ -37,6 +37,7 @@ export const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
+    { href: "/work", label: "Work" },
     { href: "/reviews", label: "Reviews" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },

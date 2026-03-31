@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { IconCloud } from "@/components/ui/interactive-icon-cloud";
 
 const slugs = [
@@ -70,6 +71,23 @@ export const Portfolio = () => {
                 <IconCloud iconSlugs={slugs} />
             </motion.div>
         </div>
+
+        {/* View Work CTA */}
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-12 md:mt-20"
+        >
+            <Link 
+                href="/work" 
+                className="inline-flex items-center gap-3 text-white font-heading font-bold text-sm md:text-base uppercase tracking-widest hover:text-[#BD9DFF] transition-colors group"
+            >
+                View Full Portfolio
+                <span className="w-8 h-[1px] bg-white group-hover:bg-[#BD9DFF] group-hover:w-12 transition-all" />
+            </Link>
+        </motion.div>
       </div>
     </section>
   );
