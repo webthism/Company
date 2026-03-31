@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
         hostname: "aayushsearching.github.io",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "myhealthmylab.in",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {
@@ -31,7 +36,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://static.hotjar.com https://script.hotjar.com https://static.cloudflareinsights.com https://assets.apollo.io https://*.apollo.io https://aplo-evnt.com https://*.aplo-evnt.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://i.pravatar.cc https://images.unsplash.com https://aayushsearching.github.io https://www.googletagmanager.com https://www.google-analytics.com https://raw.githubusercontent.com https://cdn.jsdelivr.net https://assets.apollo.io https://aplo-evnt.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.hotjar.com https://*.hotjar.io wss://*.hotjar.com https://raw.githubusercontent.com https://cdn.jsdelivr.net https://cloudflareinsights.com https://*.apollo.io https://*.aplo-evnt.com https://aplo-evnt.com; frame-src 'self' https://vars.hotjar.com https://calendar.google.com https://calendar.app.google.com;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://static.hotjar.com https://script.hotjar.com https://static.cloudflareinsights.com https://assets.apollo.io https://*.apollo.io https://aplo-evnt.com https://*.aplo-evnt.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://i.pravatar.cc https://images.unsplash.com https://aayushsearching.github.io https://myhealthmylab.in https://www.googletagmanager.com https://www.google-analytics.com https://raw.githubusercontent.com https://cdn.jsdelivr.net https://assets.apollo.io https://aplo-evnt.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.hotjar.com https://*.hotjar.io wss://*.hotjar.com https://raw.githubusercontent.com https://cdn.jsdelivr.net https://cloudflareinsights.com https://*.apollo.io https://*.aplo-evnt.com https://aplo-evnt.com; frame-src 'self' https://vars.hotjar.com https://calendar.google.com https://calendar.app.google.com;",
           },
           {
             key: "X-Content-Type-Options",
