@@ -29,7 +29,7 @@ const fadeUp: Variants = {
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#fdf6ec]">
+    <section className="relative min-h-[100svh] mb-4 md:mb-8 flex items-center justify-center overflow-hidden bg-white rounded-b-[2rem] md:rounded-b-[3rem] shadow-[0_20px_50px_rgba(42,33,28,0.06)] border-b border-[#2a211c]/5">
       {/* Slow-drifting ambient blobs — purely decorative background motion */}
       <motion.div
         aria-hidden
