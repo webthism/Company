@@ -92,7 +92,7 @@ export const Mechanism = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="w-64 sm:w-80 md:w-[32rem] lg:w-[38rem] z-30 shrink-0 pointer-events-none md:absolute md:top-[12%] lg:top-[10%] md:-left-[15%] lg:-left-[18%] -mt-10 md:mt-0 order-first md:order-none"
+            className="w-64 sm:w-80 md:w-[32rem] lg:w-[38rem] z-30 shrink-0 pointer-events-none md:absolute md:-top-[16%] lg:-top-[20%] md:-left-[15%] lg:-left-[18%] -mt-10 md:mt-0 order-first md:order-none"
           >
             {/* NOTE: Please ensure the uploaded image is saved as 'person.png' in the public folder */}
             <img 
