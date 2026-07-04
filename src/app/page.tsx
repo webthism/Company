@@ -1,23 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { LoadingScreen } from "@/components/loading-screen";
 import { StickyBar } from "@/components/sticky-bar";
 import { Hero } from "@/components/hero";
-import { WhatsAppButton } from "@/components/whatsapp-button";
 import { Problem } from "@/components/problem";
 import { Mechanism } from "@/components/mechanism";
-import { Calculator } from "@/components/calculator";
-import { Proof } from "@/components/proof";
-import { FunnelServices } from "@/components/funnel-services";
-import { Pricing } from "@/components/pricing";
-import { Checklist } from "@/components/checklist";
-import { FunnelTestimonials } from "@/components/funnel-testimonials";
-import { FAQ } from "@/components/faq";
-import { FunnelProcess } from "@/components/funnel-process";
-import { FinalCTA } from "@/components/final-cta";
-import { SiteFooter } from "@/components/site-footer";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,33 +27,22 @@ export default function Home() {
       <LoadingScreen onComplete={() => setIsLoading(false)} />
       <StickyBar />
       <Hero />
-      <WhatsAppButton />
-
-      {[
-        <Problem key="problem" />,
-        <Mechanism key="mechanism" />,
-        <Calculator key="calculator" />,
-        <Proof key="proof" />,
-        <FunnelServices key="services" />,
-      ].map((section) => (
-        <motion.div
-          key={section.key}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-        >
-          {section}
-        </motion.div>
-      ))}
-
-      <Pricing />
-      <Checklist />
-      <FunnelTestimonials />
-      <FAQ />
-      <FunnelProcess />
-      <FinalCTA />
-      <SiteFooter />
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Problem />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Mechanism />
+      </motion.div>
     </main>
   );
 }
