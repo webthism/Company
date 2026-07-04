@@ -23,13 +23,13 @@ const pacifico = Pacifico({
 });
 
 export const metadata: Metadata = {
-  title: "Webthism — Custom Digital Alchemy for the Bold",
-  description: "We design, build, and scale high-performance digital experiences that convert. No templates, just pure conversion. Elevate your brand with award-winning design and futuristic tech.",
-  keywords: ["premium web development", "conversion optimization", "custom next.js apps", "digital craft agency", "bespoke design", "high-end ux"],
+  title: "Webthism — Websites That Turn Hungry Googlers Into Paying Customers",
+  description: "We design fast, mobile-first websites for restaurants, cafés, and food brands — with online menus, table bookings, and direct ordering that saves you from paying 25-30% commissions to aggregators.",
+  keywords: ["restaurant website design", "cafe website India", "restaurant online menu", "whatsapp ordering website", "restaurant local seo", "food business website design"],
   authors: [{ name: "Webthism Team" }],
   openGraph: {
-    title: "Webthism — High-Performance Digital Alchemy",
-    description: "Crafting extraordinary digital experiences that turn visitors into loyal customers. Premium, custom-coded, and built to scale.",
+    title: "Webthism — Websites Built Exclusively for Restaurants & Cafés",
+    description: "Fast, mobile-first restaurant websites with online menus, WhatsApp ordering, and table bookings — built to save you from 25-30% aggregator commissions.",
     url: "https://webthism.com",
     siteName: "Webthism",
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Webthism — High-Performance Digital Alchemy",
+        alt: "Webthism — Websites for Restaurants & Cafés",
       },
     ],
     locale: "en_US",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Webthism — Custom Digital Alchemy for the Bold",
-    description: "Stop using templates. Scale your brand with high-performance digital experiences that actually convert.",
+    title: "Webthism — Websites for Restaurants & Cafés",
+    description: "We build websites exclusively for restaurants, cafés, and food businesses in India — online menus, WhatsApp ordering, table bookings.",
     images: ["/og-image.png"],
     creator: "@webthism", // Replace with your actual handle if different
   },
@@ -71,10 +71,8 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#000000",
+  themeColor: "#fdf6ec",
 };
-
-import { ThemeProvider } from "@/components/theme-provider";
 
 export default function RootLayout({
   children,
@@ -84,7 +82,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${inter.variable} ${pacifico.variable} dark`}
+      className={`${manrope.variable} ${inter.variable} ${pacifico.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -160,9 +158,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

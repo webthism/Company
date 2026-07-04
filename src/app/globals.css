@@ -45,41 +45,35 @@
 }
 
 :root {
-  --background: #0e0e0e;
-  --foreground: #ffffff;
-  
-  --card: #1a1919;
-  --card-foreground: #ffffff;
-  
-  --popover: #1a1919;
-  --popover-foreground: #ffffff;
-  
-  --primary: #bd9dff;
-  --primary-foreground: #3c0089;
-  
-  --secondary: #a88cfb;
-  --secondary-foreground: #260069;
-  
-  --muted: #262626;
-  --muted-foreground: #adaaaa;
-  
-  --accent: #2c2c2c;
-  --accent-foreground: #ffffff;
-  
-  --destructive: #ff6e84;
-  --destructive-foreground: #490013;
-  
-  --border: #484847;
-  --input: #484847;
-  --ring: #bd9dff;
-  
-  --radius: 0.75rem;
-}
+  --background: #fdf6ec;
+  --foreground: #2a211c;
 
-.dark {
-  --background: #0e0e0e;
-  --foreground: #ffffff;
-  /* Same as root because we want dark by default */
+  --card: #ffffff;
+  --card-foreground: #2a211c;
+
+  --popover: #ffffff;
+  --popover-foreground: #2a211c;
+
+  --primary: #c1272d;
+  --primary-foreground: #ffffff;
+
+  --secondary: #e8792e;
+  --secondary-foreground: #ffffff;
+
+  --muted: #f3e9dc;
+  --muted-foreground: #7a6a5c;
+
+  --accent: #f3e9dc;
+  --accent-foreground: #2a211c;
+
+  --destructive: #c1272d;
+  --destructive-foreground: #ffffff;
+
+  --border: #e8dcc8;
+  --input: #e8dcc8;
+  --ring: #c1272d;
+
+  --radius: 0.75rem;
 }
 
 @layer base {
@@ -117,28 +111,38 @@
       font-size: 16px !important;
     }
   }
+
+  /* Global reduced-motion escape hatch for scroll-tied / heavy animations */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-card/60 backdrop-blur-xl border border-white/10;
+    @apply bg-card/70 backdrop-blur-xl border border-black/5;
   }
-  
+
   .text-glow {
-    text-shadow: 0 0 20px rgba(189, 157, 255, 0.3);
+    text-shadow: 0 0 20px rgba(193, 39, 45, 0.2);
   }
-  
+
   .aura-glow {
-    background: radial-gradient(circle at center, rgba(189, 157, 255, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(232, 121, 46, 0.12) 0%, transparent 70%);
   }
-  
+
   .rgb-hover {
     @apply transition-all duration-500 border border-transparent;
   }
-  
+
   .rgb-hover:hover {
     border-color: transparent;
-    background-image: linear-gradient(#1a1919, #1a1919), linear-gradient(to right, #bd9dff, #ff97b2);
+    background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(to right, #c1272d, #e8792e);
     background-origin: border-box;
     background-clip: padding-box, border-box;
   }

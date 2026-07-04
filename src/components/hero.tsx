@@ -1,123 +1,83 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { useRef, useState, useCallback } from "react";
-import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
+
+const HEADLINE_WORDS = [
+  "We", "Build", "Websites", "That", "Turn",
+  "Hungry", "Googlers", "Into", "Paying", "Customers",
+];
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+  },
+};
+
+const wordVariant: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+};
 
 export const Hero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  // Optimization: isInteractive only becomes true on mouse move.
-  // This keeps the initial SSR/Hydration style 100% identical for a stable LCP.
-  const [isInteractive, setIsInteractive] = useState(false);
-
-  // --- 3D Tilt Physics ---
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), { stiffness: 150, damping: 25 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), { stiffness: 150, damping: 25 });
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    if (!isInteractive) setIsInteractive(true);
-    const rect = containerRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    mouseX.set((e.clientX - centerX) / rect.width);
-    mouseY.set((e.clientY - centerY) / rect.height);
-  }, [mouseX, mouseY, isInteractive]);
-
-  const handleMouseLeave = useCallback(() => {
-    mouseX.set(0);
-    mouseY.set(0);
-  }, [mouseX, mouseY]);
-
   return (
-    <section 
-      ref={containerRef} 
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative min-h-[100svh] pt-20 md:pt-24 flex flex-col items-center justify-center overflow-hidden bg-black selection:bg-primary/30 [perspective:1200px]"
-    >
-      {/* --- Dynamic 3D Environment --- */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* 3D Floor Grid */}
-        <div 
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200%] h-[100%] border-t border-white/10 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] [transform:rotateX(60deg)_translateY(50%)_translateZ(-200px)] [mask-image:linear-gradient(to_top,black,transparent)] opacity-40"
-        />
-        
-        {/* Floating Ambient Glows */}
-        <div className="absolute top-1/4 left-1/4 w-[50%] md:w-[40%] h-[40%] bg-primary/10 blur-[100px] md:blur-[150px] rounded-full animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[50%] md:w-[40%] h-[40%] bg-[#BD9DFF]/10 blur-[100px] md:blur-[150px] rounded-full animate-pulse delay-700" />
-      </div>
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#fdf6ec]">
+      {/* Slow-drifting ambient blobs — purely decorative background motion */}
+      <motion.div
+        aria-hidden
+        animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/5 w-[55%] md:w-[38%] h-[40%] bg-[#e8792e]/15 blur-[110px] md:blur-[150px] rounded-full pointer-events-none"
+      />
+      <motion.div
+        aria-hidden
+        animate={{ x: [0, -30, 25, 0], y: [0, 25, -20, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 right-1/5 w-[55%] md:w-[38%] h-[40%] bg-[#c1272d]/10 blur-[110px] md:blur-[150px] rounded-full pointer-events-none"
+      />
 
-      {/* --- Stable 3D Content Card --- */}
-      {/* 
-        Optimization: We keep the card's base style constant across hydration.
-        Only when 'isInteractive' is true (mouse moved) do we merge the tilt values.
-        This provides a 100% consistent LCP paint that never shifts during the hydration phase.
-      */}
-      <motion.div 
-        style={{ 
-          rotateX: isInteractive ? rotateX : 0, 
-          rotateY: isInteractive ? rotateY : 0, 
-          transformStyle: "preserve-3d" 
-        }}
-        className="container mx-auto px-5 sm:px-6 relative z-10 py-6 md:py-10 rounded-3xl md:backdrop-blur-[2px] will-change-transform"
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 text-center"
       >
-        <div className="max-w-5xl mx-auto text-center" style={{ transformStyle: "preserve-3d" }}>
-          {/* Headline - Zero-JS LCP Stability */}
-          <h1
-            style={{ 
-              transform: isInteractive ? "translate3d(0, 0, 80px)" : "none",
-              transformStyle: "preserve-3d" 
-            }}
-            className="font-heading text-[2.5rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[7.5rem] font-bold tracking-tight md:leading-[0.95] mb-5 md:mb-8 text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform-gpu"
-          >
-            Custom Websites That <br />
-            Actually <span className="text-[#BD9DFF] italic font-serif">Convert</span>
-          </h1>
-          
-          <p
-            style={{ 
-              transform: isInteractive ? "translate3d(0, 0, 40px)" : "none",
-              transformStyle: "preserve-3d" 
-            }}
-            className="max-w-3xl mx-auto text-[#A1A1AA] text-sm sm:text-base md:text-xl mb-8 md:mb-10 font-sans font-light leading-relaxed px-2 transition-all duration-700"
-          >
-            We design, build, and scale high-performance digital experiences that turn visitors into loyal customers. No templates, just pure conversion.
-          </p>
-          
-          <div
-            style={{ 
-              transform: isInteractive ? "translate3d(0, 0, 100px)" : "none",
-              transformStyle: "preserve-3d" 
-            }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6 px-4 sm:px-0"
-          >
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#BD9DFF] text-[#1D1D1F] hover:bg-[#A984FF] transition-all hover:scale-[1.1] active:scale-[0.95] shadow-[0_10px_30px_rgba(189,157,255,0.4)]"
+        <motion.p variants={fadeUp} className="font-logo text-[2.1rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] text-[#c1272d] mb-5 md:mb-7">
+          Webthism
+        </motion.p>
+
+        <motion.h1 className="font-heading text-3xl leading-[1.15] sm:text-4xl md:text-5xl font-black tracking-tight text-[#2a211c] mb-9 md:mb-12">
+          {HEADLINE_WORDS.map((word, i) => (
+            <motion.span
+              key={i}
+              variants={wordVariant}
+              className={`inline-block mr-[0.28em] ${
+                i >= 5 ? "text-[#c1272d] italic font-serif" : ""
+              }`}
             >
-              <Link href="/#blueprint" scroll={true}>
-                Free Website Checklist
-              </Link>
-            </Button>
-            
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg border-[#27272A] bg-transparent text-white hover:bg-white/10 transition-all hover:scale-[1.1] active:scale-[0.95]"
-            >
-              <Link href="/#testimonials" scroll={true}>
-                View Our Work
-              </Link>
-            </Button>
-          </div>
-        </div>
+              {word}
+            </motion.span>
+          ))}
+        </motion.h1>
+
+        <motion.div variants={fadeUp} className="flex justify-center px-4 sm:px-0">
+          <Button
+            asChild
+            size="lg"
+            className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#c1272d] text-white hover:bg-[#a81f24] transition-all hover:scale-[1.05] active:scale-[0.95] shadow-[0_10px_30px_rgba(193,39,45,0.35)]"
+          >
+            {/* Placeholder: swap href for your real Calendly link, e.g. https://calendly.com/your-id/20min */}
+            <a href="#book">Book a Free 20-Min Website Strategy Call</a>
+          </Button>
+        </motion.div>
       </motion.div>
     </section>
   );
