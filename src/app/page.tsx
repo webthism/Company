@@ -6,6 +6,8 @@ import { StickyBar } from "@/components/sticky-bar";
 import { Hero } from "@/components/hero";
 import { Problem } from "@/components/problem";
 import { Mechanism } from "@/components/mechanism";
+import { Calculator } from "@/components/calculator";
+import { TestimonialSection } from "@/components/testimonials";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -26,23 +28,29 @@ export default function Home() {
     <main className="min-h-screen bg-[#fdf6ec]">
       <LoadingScreen onComplete={() => setIsLoading(false)} />
       <StickyBar />
-      <Hero />
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-      >
-        <Problem />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-      >
-        <Mechanism />
-      </motion.div>
+      
+      <div className="bg-[#fdf6ec]">
+        <div className="relative z-10 bg-[#fdf6ec] shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-b-3xl pb-10">
+          <Hero />
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Problem />
+          </motion.div>
+          <Mechanism />
+        </div>
+
+        <div className="sticky bottom-0 z-0">
+          <Calculator />
+        </div>
+      </div>
+
+      <div className="relative z-20 bg-white">
+        <TestimonialSection />
+      </div>
     </main>
   );
 }
