@@ -10,36 +10,36 @@
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --font-logo: var(--font-logo);
-  
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-  
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  
+
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  
+
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-sm: calc(var(--radius) * 0.6);
-  
+
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 }
@@ -80,12 +80,12 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
-  
+
   body {
     @apply bg-background text-foreground antialiased;
     overflow-x: hidden;
@@ -95,10 +95,15 @@
 
   /* Better touch targets on mobile */
   @media (max-width: 640px) {
-    button, a, input, select, textarea {
+
+    button,
+    a,
+    input,
+    select,
+    textarea {
       min-height: 44px;
     }
-    
+
     /* Fix iOS input zoom */
     input[type="text"],
     input[type="email"],
@@ -114,7 +119,10 @@
 
   /* Global reduced-motion escape hatch for scroll-tied / heavy animations */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -150,8 +158,15 @@
   /* --- CRITICAL LCP REVEAL ANIMATION --- */
   /* This decouples the initial content paint from the JS hydration process */
   @keyframes lcp-reveal {
-    from { opacity: 0; transform: translate3d(0, 15px, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
+    from {
+      opacity: 0;
+      transform: translate3d(0, 15px, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
   }
 
   .lcp-element {

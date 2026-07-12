@@ -35,32 +35,47 @@ const STEPS = [
 
 export const Mechanism = () => {
   return (
-    <section className="relative w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6">
+    <section className="relative w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6 -mt-[25vh]">
       <div className="max-w-5xl mx-auto">
         <div className="relative flex flex-col items-center justify-center pt-10 md:pt-20">
           
+          {/* Ambient Background Blobs */}
+          <motion.div
+            aria-hidden
+            animate={{ x: [0, 30, -15, 0], y: [0, -20, 15, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-10 left-10 md:left-20 w-64 h-64 bg-[#e8792e]/10 blur-[80px] rounded-full pointer-events-none"
+          />
+          <motion.div
+            aria-hidden
+            animate={{ x: [0, -20, 20, 0], y: [0, 25, -15, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-10 right-10 md:right-20 w-72 h-72 bg-[#c1272d]/5 blur-[80px] rounded-full pointer-events-none"
+          />
+
+          {/* Section Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="relative z-20 font-heading text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#2a211c] mb-8 text-center"
+          >
+            The Full Plate <span className="text-[#c1272d] italic font-serif">Framework</span>
+          </motion.h2>
+
           {/* Main Card */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className={cn(
-              "relative z-20 w-full max-w-2xl bg-white rounded-[2rem] p-8 sm:p-10 md:p-12",
-              "shadow-[0_20px_50px_rgba(42,33,28,0.06)] border border-[#2a211c]/5 md:ml-32"
+              "relative z-20 w-full max-w-5xl bg-white rounded-[2rem] p-8 sm:p-10 md:p-16",
+              "shadow-[0_20px_50px_rgba(42,33,28,0.06)] border border-[#2a211c]/5"
             )}
           >
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="font-heading text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#2a211c] mb-10"
-            >
-              The Full Plate <span className="text-[#c1272d] italic font-serif">Framework</span>
-            </motion.h2>
-
-            <div className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {STEPS.map((step, i) => (
                 <motion.div
                   key={step.title}
@@ -68,13 +83,13 @@ export const Mechanism = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.12 }}
-                  className="flex items-start gap-5 group"
+                  className="flex flex-col items-center text-center gap-5 group"
                 >
-                  <div className="w-12 h-12 shrink-0 rounded-2xl bg-[#fdf6ec] flex items-center justify-center group-hover:bg-[#f3e9dc] transition-colors duration-300">
+                  <div className="w-16 h-16 shrink-0 rounded-2xl bg-[#fdf6ec] flex items-center justify-center group-hover:bg-[#f3e9dc] group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
                     {step.icon}
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl font-bold text-[#2a211c] mb-1">
+                    <h3 className="font-heading text-xl font-bold text-[#2a211c] mb-3">
                       {step.title}
                     </h3>
                     <p className="text-[#2a211c]/70 text-base leading-relaxed">
@@ -86,21 +101,6 @@ export const Mechanism = () => {
             </div>
           </motion.div>
 
-          {/* Character Image - Stacks on top for mobile, absolute positioned perfectly on desktop */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="w-64 sm:w-80 md:w-[32rem] lg:w-[38rem] z-30 shrink-0 pointer-events-none md:absolute md:-top-[16%] lg:-top-[20%] md:-left-[15%] lg:-left-[18%] -mt-10 md:mt-0 order-first md:order-none"
-          >
-            {/* NOTE: Please ensure the uploaded image is saved as 'person.png' in the public folder */}
-            <img 
-              src="/person.png" 
-              alt="The Full Plate Framework Guide"
-              className="w-full h-auto object-contain drop-shadow-2xl"
-            />
-          </motion.div>
 
         </div>
       </div>

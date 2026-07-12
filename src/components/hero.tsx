@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { VideoScrollHero } from "@/components/ui/video-scroll-hero";
 import { motion, type Variants } from "framer-motion";
 
 const HEADLINE_WORDS = [
@@ -31,10 +30,7 @@ const fadeUp: Variants = {
 export const Hero = () => {
   return (
     <div className="relative mb-4 md:mb-8">
-      <VideoScrollHero
-        videoSrc="/hero-bg/hero-section.mp4"
-        className="bg-white rounded-b-[2rem] md:rounded-b-[3rem] shadow-[0_20px_50px_rgba(42,33,28,0.06)] border-b border-[#2a211c]/5"
-      >
+      <section className="relative min-h-[100svh] flex items-center justify-center bg-white rounded-b-[2rem] md:rounded-b-[3rem] shadow-[0_20px_50px_rgba(42,33,28,0.06)] border-b border-[#2a211c]/5">
         <motion.div
           variants={container}
           initial="hidden"
@@ -70,7 +66,7 @@ export const Hero = () => {
             </Button>
           </motion.div>
         </motion.div>
-      </VideoScrollHero>
+      </section>
     </div>
   );
 };

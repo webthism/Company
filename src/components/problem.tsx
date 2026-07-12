@@ -44,7 +44,7 @@ const PAIN_POINTS = [
 
 export const Problem = () => {
   return (
-    <section id="problem" className="relative w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6 overflow-hidden">
+    <section id="problem" className="relative z-10 w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
