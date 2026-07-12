@@ -170,21 +170,44 @@ export function TextRepel({
             }}
             aria-label={text}
         >
-            {text.split("").map((letter, i) => (
-                <RepelLetter
-                    key={i}
-                    letter={letter}
-                    mouseX={mouseX}
-                    mouseY={mouseY}
-                    radius={radius}
-                    strength={strength}
-                    mode={mode}
-                    stiffness={stiffness}
-                    damping={damping}
-                    mass={mass}
-                    className={letterClassName}
-                />
-            ))}
+            {text.match(/\s+|\S+/g)?.map((token, i) => {
+                if (/\s+/.test(token)) {
+                    return token.split("").map((space, j) => (
+                        <RepelLetter
+                            key={`${i}-${j}`}
+                            letter={space}
+                            mouseX={mouseX}
+                            mouseY={mouseY}
+                            radius={radius}
+                            strength={strength}
+                            mode={mode}
+                            stiffness={stiffness}
+                            damping={damping}
+                            mass={mass}
+                            className={letterClassName}
+                        />
+                    ));
+                }
+                return (
+                    <span key={i} className="inline-block whitespace-nowrap">
+                        {token.split("").map((letter, j) => (
+                            <RepelLetter
+                                key={`${i}-${j}`}
+                                letter={letter}
+                                mouseX={mouseX}
+                                mouseY={mouseY}
+                                radius={radius}
+                                strength={strength}
+                                mode={mode}
+                                stiffness={stiffness}
+                                damping={damping}
+                                mass={mass}
+                                className={letterClassName}
+                            />
+                        ))}
+                    </span>
+                );
+            })}
         </span>
     );
 }
