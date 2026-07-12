@@ -35,7 +35,7 @@ const STEPS = [
 
 export const Mechanism = () => {
   return (
-    <section id="mechanism" className="relative w-full bg-[#fdf6ec] pt-10 pb-20 md:pt-16 md:pb-32 px-5 sm:px-6">
+    <section id="mechanism" className="relative w-full bg-[#fdf6ec] pt-10 pb-8 md:pt-16 md:pb-16 px-5 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <div className="relative flex flex-col items-center justify-center pt-4 md:pt-10">
 
