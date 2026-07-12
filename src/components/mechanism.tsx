@@ -35,10 +35,10 @@ const STEPS = [
 
 export const Mechanism = () => {
   return (
-    <section id="mechanism" className="relative w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6 -mt-[25vh]">
+    <section id="mechanism" className="relative w-full bg-[#fdf6ec] pt-10 pb-20 md:pt-16 md:pb-32 px-5 sm:px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="relative flex flex-col items-center justify-center pt-10 md:pt-20">
-          
+        <div className="relative flex flex-col items-center justify-center pt-4 md:pt-10">
+
           {/* Ambient Background Blobs */}
           <motion.div
             aria-hidden
@@ -83,16 +83,16 @@ export const Mechanism = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.12 }}
-                  className="flex flex-col items-center text-center gap-5 group"
+                  className="flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-4 md:gap-5 group"
                 >
-                  <div className="w-16 h-16 shrink-0 rounded-2xl bg-[#fdf6ec] flex items-center justify-center group-hover:bg-[#f3e9dc] group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                  <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-xl md:rounded-2xl bg-[#fdf6ec] flex items-center justify-center group-hover:bg-[#f3e9dc] group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
                     {step.icon}
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl font-bold text-[#2a211c] mb-3">
+                    <h3 className="font-heading text-lg md:text-xl font-bold text-[#2a211c] mb-1 md:mb-3">
                       {step.title}
                     </h3>
-                    <p className="text-[#2a211c]/70 text-base leading-relaxed">
+                    <p className="text-[#2a211c]/70 text-sm md:text-base leading-relaxed">
                       {step.description}
                     </p>
                   </div>

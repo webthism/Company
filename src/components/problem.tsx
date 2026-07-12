@@ -44,7 +44,7 @@ const PAIN_POINTS = [
 
 export const Problem = () => {
   return (
-    <section id="problem" className="relative z-10 w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6 overflow-hidden">
+    <section id="problem" className="relative z-10 w-full bg-[#fdf6ec] pt-20 pb-10 md:pt-32 md:pb-16 px-5 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,7 @@ export const Problem = () => {
           Problems <span className="text-[#c1272d] italic font-serif">— Sound Familiar?</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8 w-full max-w-5xl mx-auto">
           {PAIN_POINTS.map((point, i) => (
             <motion.div
               key={point.title}
@@ -64,18 +64,18 @@ export const Problem = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className={cn(
-                "flex flex-col bg-white rounded-3xl p-8 sm:p-10",
+                "flex flex-col bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10",
                 "shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#2a211c]/5",
                 "hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-shadow duration-300"
               )}
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#fdf6ec] flex items-center justify-center mb-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-[#fdf6ec] flex items-center justify-center mb-4 sm:mb-6">
                 {point.icon}
               </div>
-              <h3 className="font-heading text-2xl font-bold text-[#2a211c] mb-4">
+              <h3 className="font-heading text-lg sm:text-2xl font-bold text-[#2a211c] mb-2 sm:mb-4">
                 {point.title}
               </h3>
-              <p className="text-[#2a211c]/70 text-lg leading-relaxed">
+              <p className="text-[#2a211c]/70 text-sm sm:text-lg leading-relaxed">
                 {point.description}
               </p>
             </motion.div>
