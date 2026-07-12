@@ -40,7 +40,7 @@ export const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="relative w-full bg-white py-20 md:py-32 px-5 sm:px-6">
+    <section id="faq" className="relative w-full bg-white py-20 md:py-32 px-5 sm:px-6">
       <div className="max-w-3xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

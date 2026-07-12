@@ -46,7 +46,7 @@ const SERVICES = [
 
 export const FunnelServices = () => {
   return (
-    <section className="relative w-full bg-white px-5 sm:px-6 overflow-hidden">
+    <section id="services" className="relative w-full bg-white px-5 sm:px-6 overflow-hidden">
       <ContainerScroll
         titleComponent={
           <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-[#2a211c] text-center mb-8">

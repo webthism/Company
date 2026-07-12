@@ -63,7 +63,7 @@ const CheckIcon = ({ className }: { className: string }) => (
 
 export const Pricing = () => {
   return (
-    <section className="relative w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6">
+    <section id="pricing" className="relative w-full bg-[#fdf6ec] py-20 md:py-32 px-5 sm:px-6">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

@@ -82,7 +82,7 @@ export const Checklist = () => {
           onClick={() => setIsOpen(true)}
           className="h-12 sm:h-14 px-8 sm:px-12 rounded-full font-heading font-black text-sm sm:text-base bg-[#2a211c] text-white hover:bg-[#2a211c]/85 transition-all hover:scale-[1.03] active:scale-[0.97]"
         >
-          Get the Free Checklist PDF
+          Get the Free Detailed Checklist PDF
         </Button>
       </div>
 

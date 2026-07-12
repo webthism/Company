@@ -6,12 +6,15 @@ import { StickyBar } from "@/components/sticky-bar";
 import { Hero } from "@/components/hero";
 import { Problem } from "@/components/problem";
 import { Mechanism } from "@/components/mechanism";
+import { FunnelProcess } from "@/components/funnel-process";
 import { Calculator } from "@/components/calculator";
 import { FunnelServices } from "@/components/funnel-services";
 import { Pricing } from "@/components/pricing";
 import { Checklist } from "@/components/checklist";
 import { Faq } from "@/components/faq";
+import { FinalCta } from "@/components/final-cta";
 import { TestimonialSection } from "@/components/testimonials";
+import { SiteFooter } from "@/components/site-footer";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -93,6 +96,16 @@ export default function Home() {
         >
           <Faq />
         </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
+          <FunnelProcess />
+        </motion.div>
+        <FinalCta />
+        <SiteFooter />
       </div>
     </main>
   );
