@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 const SERVICES = [
   {
@@ -45,44 +46,39 @@ const SERVICES = [
 
 export const FunnelServices = () => {
   return (
-    <section className="relative w-full bg-white py-20 md:py-32 px-5 sm:px-6">
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-heading text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#2a211c] text-center mb-16"
-        >
-          What You <span className="text-[#c1272d] italic font-serif">Get</span>
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-          {SERVICES.map((service, i) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={cn(
-                "flex flex-col bg-[#fdf6ec] rounded-3xl p-8 sm:p-10",
-                "shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-[#2a211c]/5",
-                "hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-shadow duration-300"
-              )}
-            >
-              <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-6">
-                {service.icon}
+    <section className="relative w-full bg-white px-5 sm:px-6 overflow-hidden">
+      <ContainerScroll
+        titleComponent={
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-[#2a211c] text-center mb-8">
+            What You <span className="text-[#c1272d] italic font-serif">Get</span>
+          </h2>
+        }
+      >
+        <div className="h-full w-full overflow-y-auto bg-[#fdf6ec] p-4 md:p-8 no-scrollbar">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full">
+            {SERVICES.map((service, i) => (
+              <div
+                key={service.title}
+                className={cn(
+                  "flex flex-col bg-white rounded-3xl p-6 md:p-8",
+                  "shadow-sm border border-[#2a211c]/5",
+                  "hover:shadow-md transition-shadow duration-300"
+                )}
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#fdf6ec] flex items-center justify-center mb-4 md:mb-6">
+                  {service.icon}
+                </div>
+                <h3 className="font-heading text-xl md:text-2xl font-bold text-[#2a211c] mb-2 md:mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-[#2a211c]/70 text-base md:text-lg leading-relaxed">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="font-heading text-2xl font-bold text-[#2a211c] mb-4">
-                {service.title}
-              </h3>
-              <p className="text-[#2a211c]/70 text-lg leading-relaxed">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </ContainerScroll>
     </section>
   );
 };

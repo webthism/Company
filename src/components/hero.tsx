@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, type Variants } from "framer-motion";
+import { TextRepel } from "@/components/ui/text-repel";
 
 const HEADLINE_WORDS = [
   "We", "Build", "Websites", "That", "Turn",
@@ -41,18 +42,12 @@ export const Hero = () => {
             Webthism
           </motion.p>
 
-          <motion.h1 className="font-heading text-3xl leading-[1.15] sm:text-4xl md:text-5xl font-black tracking-tight text-[#2a211c] mb-9 md:mb-12">
-            {HEADLINE_WORDS.map((word, i) => (
-              <motion.span
-                key={i}
-                variants={wordVariant}
-                className={`inline-block mr-[0.28em] ${
-                  i >= 5 ? "text-[#c1272d] italic font-serif" : ""
-                }`}
-              >
-                {word}
-              </motion.span>
-            ))}
+          <motion.h1 
+            variants={fadeUp}
+            className="font-heading text-3xl leading-[1.15] sm:text-4xl md:text-5xl font-black tracking-tight text-[#2a211c] mb-9 md:mb-12 flex flex-wrap justify-center items-center gap-x-2"
+          >
+            <TextRepel text="We Build Websites That Turn " mode="repel" radius={120} strength={40} />
+            <TextRepel text="Hungry Googlers Into Paying Customers" className="text-[#c1272d] italic font-serif" mode="repel" radius={120} strength={40} />
           </motion.h1>
 
           <motion.div variants={fadeUp} className="flex justify-center px-4 sm:px-0">
