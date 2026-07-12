@@ -29,22 +29,33 @@ export const Checklist = () => {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const close = () => {
     setIsOpen(false);
     setEmail("");
     setSubmitting(false);
     setSubmitted(false);
+    setError("");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // Placeholder: swap for a real email-capture backend call
-    setTimeout(() => {
-      setSubmitting(false);
+    setError("");
+    try {
+      const res = await fetch("/api/checklist-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("Signup failed");
       setSubmitted(true);
-    }, 600);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -149,6 +160,9 @@ export const Checklist = () => {
                     >
                       {submitting ? "Sending..." : "Send Me the Checklist"}
                     </Button>
+                    {error && (
+                      <p className="text-sm text-[#c1272d] text-center">{error}</p>
+                    )}
                   </form>
                   <button
                     onClick={close}
