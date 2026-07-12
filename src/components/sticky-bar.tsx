@@ -10,8 +10,7 @@ export const StickyBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const problem = document.getElementById("problem");
-      setIsScrolled(problem ? problem.getBoundingClientRect().top <= 0 : window.scrollY > 10);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
