@@ -67,7 +67,7 @@ export const Calculator = () => {
               step={10_000}
               value={monthlySales}
               onChange={(e) => setMonthlySales(Number(e.target.value))}
-              className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e8792e]"
+              className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e8792e] [&::-webkit-slider-thumb]:opacity-0 [&::-moz-range-thumb]:opacity-0"
               style={{
                 background: `linear-gradient(to right, #e8792e ${sliderPercent}%, rgba(255,255,255,0.15) ${sliderPercent}%)`,
               }}
