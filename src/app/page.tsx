@@ -7,11 +7,22 @@ import { Hero } from "@/components/hero";
 import { Problem } from "@/components/problem";
 import { Mechanism } from "@/components/mechanism";
 import { Calculator } from "@/components/calculator";
+import { FunnelServices } from "@/components/funnel-services";
+import { Pricing } from "@/components/pricing";
+import { Checklist } from "@/components/checklist";
+import { Faq } from "@/components/faq";
 import { TestimonialSection } from "@/components/testimonials";
 import { motion } from "framer-motion";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   useEffect(() => {
     if (isLoading && window.innerWidth >= 768) {
@@ -49,7 +60,39 @@ export default function Home() {
       </div>
 
       <div className="relative z-20 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
+          <FunnelServices />
+        </motion.div>
         <TestimonialSection />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Pricing />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Checklist />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Faq />
+        </motion.div>
       </div>
     </main>
   );
