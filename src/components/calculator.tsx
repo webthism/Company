@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { GlowEffect } from "@/components/ui/glow-effect";
 
 const MIN_SALES = 50_000;
 const MAX_SALES = 1_000_000;
@@ -104,11 +103,17 @@ export const Calculator = () => {
 
           <div className="flex justify-center">
             <div className="relative">
-              <GlowEffect
-                colors={["#e8792e", "#c1272d", "#e8792e"]}
-                mode="colorShift"
-                blur="strong"
-                className="rounded-full"
+              <motion.div
+                animate={{
+                  background: [
+                    "conic-gradient(from 0deg at 50% 50%, #e8792e 0%, #c1272d 50%, #e8792e 100%)",
+                    "conic-gradient(from 0deg at 50% 50%, #c1272d 0%, #e8792e 50%, #c1272d 100%)",
+                    "conic-gradient(from 0deg at 50% 50%, #e8792e 0%, #e8792e 50%, #e8792e 100%)",
+                  ],
+                }}
+                transition={{ repeat: Infinity, duration: 5, ease: "linear", repeatType: "mirror" }}
+                style={{ willChange: "transform", backfaceVisibility: "hidden" }}
+                className="pointer-events-none absolute inset-0 h-full w-full rounded-full blur-xl transform-gpu"
               />
               <Button
                 asChild

@@ -1,27 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-
 export const TestimonialSection = () => {
-    const testimonials = [
-        {
-            name: 'Sarah Jenkins',
-            role: 'Cafe Owner',
-            avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop',
-            content: "Working with this team has completely transformed how our cafe takes online orders. The new system is seamless, and our customers love it.",
-        },
-        {
-            name: 'Michael Chen',
-            role: 'Restaurant Manager',
-            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop',
-            content: 'We finally have control over our own customer data. Escaping the high commission fees of delivery apps was the best decision we ever made.',
-        },
-        {
-            name: 'Elena Rodriguez',
-            role: 'Head Chef',
-            avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop',
-            content: 'Our brand finally stands out. The beautiful website showcases our food exactly how it deserves to be seen, driving more foot traffic than ever.',
-        },
-    ]
-
     return (
         <section className="relative w-full bg-white py-20 md:py-32 px-5 sm:px-6">
             <div className="max-w-5xl mx-auto">
