@@ -17,8 +17,8 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       return;
     }
 
-    const growTimer = setTimeout(() => setGrowing(true), 2000);
-    const hideTimer = setTimeout(() => setVisible(false), 2600);
+    const growTimer = setTimeout(() => setGrowing(true), 1000);
+    const hideTimer = setTimeout(() => setVisible(false), 1500);
     return () => {
       clearTimeout(growTimer);
       clearTimeout(hideTimer);
@@ -39,8 +39,9 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               scale: growing ? 3.5 : 1,
               opacity: growing ? 0 : 1,
             }}
-            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            className="relative w-[240px] h-[240px]"
+            initial={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+            className="relative w-[240px] h-[240px] rounded-full bg-white overflow-hidden shadow-[0_0_120px_rgba(232,121,46,0.35)]"
           >
             <Image
               src="/loader.png"
@@ -48,7 +49,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               fill
               priority
               sizes="240px"
-              className="object-contain"
+              className="object-contain p-6"
             />
           </motion.div>
         </motion.div>

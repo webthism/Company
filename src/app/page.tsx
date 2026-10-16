@@ -2,20 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { LoadingScreen } from "@/components/loading-screen";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { StickyBar } from "@/components/sticky-bar";
 import { Hero } from "@/components/hero";
 import { Problem } from "@/components/problem";
-import { Mechanism } from "@/components/mechanism";
-import { FunnelProcess } from "@/components/funnel-process";
 import { Calculator } from "@/components/calculator";
-import { FunnelServices } from "@/components/funnel-services";
-import { Pricing } from "@/components/pricing";
-import { Checklist } from "@/components/checklist";
-import { Faq } from "@/components/faq";
-import { FinalCta } from "@/components/final-cta";
+import { HowItWorks } from "@/components/how-it-works";
 import { TestimonialSection } from "@/components/testimonials";
+import { Pricing } from "@/components/pricing";
+import { Faq } from "@/components/faq";
+import { Checklist } from "@/components/checklist";
+import { FinalCta } from "@/components/final-cta";
 import { SiteFooter } from "@/components/site-footer";
-import { motion } from "framer-motion";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,22 +37,16 @@ export default function Home() {
   }, [isLoading]);
 
   return (
-    <main className="min-h-screen bg-[#fdf6ec]">
+    <main className="min-h-screen bg-ink">
       <LoadingScreen onComplete={() => setIsLoading(false)} />
+      <SmoothScroll />
       <StickyBar />
-      
-      <div className="bg-[#fdf6ec]">
-        <div className="relative z-10 bg-[#fdf6ec] shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-b-3xl pb-10">
-          <Hero />
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Problem />
-          </motion.div>
-          <Mechanism />
+
+      <div className="bg-surface">
+        {/* Curtain: this block scrolls away to reveal the sticky calculator underneath */}
+        <div className="relative z-10 overflow-clip bg-ink rounded-b-[2.5rem] md:rounded-b-[4rem] border-b border-cream/10 shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+          <Hero ready={!isLoading} />
+          <Problem />
         </div>
 
         <div className="sticky bottom-0 z-0">
@@ -62,48 +54,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative z-20 bg-white">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-        >
-          <FunnelServices />
-        </motion.div>
+      <div className="relative z-20 overflow-clip bg-ink rounded-t-[2.5rem] md:rounded-t-[4rem] border-t border-cream/10 shadow-[0_-40px_80px_rgba(0,0,0,0.6)]">
+        <HowItWorks />
         <TestimonialSection />
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Pricing />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Checklist />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Faq />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-        >
-          <FunnelProcess />
-        </motion.div>
+        <Pricing />
+        <Faq />
+        <Checklist />
         <FinalCta />
         <SiteFooter />
       </div>

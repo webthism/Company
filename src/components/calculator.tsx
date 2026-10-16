@@ -38,19 +38,20 @@ export const Calculator = () => {
   const paybackWeeks = Math.max(1, Math.ceil((WEBSITE_COST / monthlyLoss) * 4.33));
 
   return (
-    <section className="w-full min-h-[100dvh] flex flex-col justify-center bg-[#2a211c] py-16 md:py-24 px-5 sm:px-6 overflow-hidden">
-      <div className="max-w-3xl mx-auto w-full">
+    <section id="calculator" className="relative w-full min-h-[100dvh] flex flex-col justify-center bg-surface py-16 md:py-24 px-5 sm:px-6 overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[40rem] w-[40rem] rounded-full bg-ember/10 blur-[160px]" />
+      <div className="relative max-w-3xl mx-auto w-full">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="font-heading text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white text-center mb-10 sm:mb-16"
+          className="font-heading text-3xl sm:text-5xl md:text-6xl font-black tracking-[-0.03em] text-cream text-center mb-10 sm:mb-16"
         >
-          How Much Is <span className="text-[#e8792e] italic font-serif">Zomato/Swiggy</span> Really Costing You?
+          How Much Is <span className="text-ember italic font-serif font-normal">Zomato/Swiggy</span> Really Costing You?
         </motion.h2>
 
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-10 md:p-12">
+        <div className="bg-cream/[0.03] border border-cream/10 rounded-[2rem] p-6 sm:p-10 md:p-12 backdrop-blur-xl shadow-[0_40px_120px_rgba(0,0,0,0.5)]">
           <div className="mb-6 sm:mb-10">
             <div className="flex items-baseline justify-between mb-4">
               <label className="text-white/60 text-sm sm:text-base font-medium">
@@ -79,15 +80,15 @@ export const Calculator = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-10">
-            <div className="bg-[#2a211c] rounded-2xl p-5 sm:p-6 border border-white/10">
+            <div className="bg-ink/60 rounded-2xl p-5 sm:p-6 border border-cream/10">
               <p className="text-white/50 text-xs sm:text-sm mb-1 sm:mb-2">You Lose Every Month</p>
-              <p className="font-heading text-2xl sm:text-4xl font-black text-[#e8792e]">
+              <p className="font-heading text-2xl sm:text-4xl font-black text-ember [text-shadow:0_0_40px_rgba(232,121,46,0.5)]">
                 <CountUp value={monthlyLoss} format={formatINR} />
               </p>
             </div>
-            <div className="bg-[#2a211c] rounded-2xl p-5 sm:p-6 border border-white/10">
+            <div className="bg-ink/60 rounded-2xl p-5 sm:p-6 border border-cream/10">
               <p className="text-white/50 text-xs sm:text-sm mb-1 sm:mb-2">You Lose Every Year</p>
-              <p className="font-heading text-2xl sm:text-4xl font-black text-[#c1272d]">
+              <p className="font-heading text-2xl sm:text-4xl font-black text-brand-bright [text-shadow:0_0_40px_rgba(226,58,64,0.5)]">
                 <CountUp value={yearlyLoss} format={formatINR} />
               </p>
             </div>
@@ -118,7 +119,7 @@ export const Calculator = () => {
               <Button
                 asChild
                 size="lg"
-                className="relative w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-[#c1272d] text-white hover:bg-[#a81f24] transition-all hover:scale-[1.03] active:scale-[0.95] shadow-[0_10px_30px_rgba(193,39,45,0.35)]"
+                className="relative w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-brand text-white hover:bg-brand-bright transition-all hover:scale-[1.03] active:scale-[0.95] shadow-[0_10px_30px_rgba(193,39,45,0.35)]"
               >
                 <a href="#book">Stop Losing Money — Get Your Website</a>
               </Button>
