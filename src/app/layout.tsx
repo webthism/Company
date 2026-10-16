@@ -109,7 +109,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased" suppressHydrationWarning>
         {children}
-        {/* Loads GA/Hotjar/Apollo only after cookie consent is accepted */}
+        {/* Loads GA/Apollo only after cookie consent is accepted */}
         <AnalyticsScripts />
         <CookieConsentBanner />
       </body>

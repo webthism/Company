@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { button, cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
 export const Checklist = () => {
@@ -50,13 +49,12 @@ export const Checklist = () => {
             10 things every restaurant website <span className="font-serif italic font-normal text-ember">must have.</span>
           </h2>
         </div>
-        <Button
-          size="lg"
+        <button
           onClick={() => setIsOpen(true)}
-          className="relative shrink-0 h-14 px-8 rounded-full font-heading font-black text-sm sm:text-base bg-cream text-ink hover:bg-white transition-all hover:scale-[1.03] active:scale-[0.97]"
+          className={cn(button, "relative shrink-0 h-14 px-8 rounded-full font-heading font-black text-sm sm:text-base bg-cream text-ink hover:bg-white transition-all hover:scale-[1.03] active:scale-[0.97]")}
         >
           Get the Checklist
-        </Button>
+        </button>
       </Reveal>
 
       <AnimatePresence>
@@ -113,16 +111,17 @@ export const Checklist = () => {
                       placeholder="you@restaurant.com"
                       className="w-full h-12 px-4 rounded-full border border-cream/15 bg-ink text-cream placeholder:text-cream/30 focus:outline-none focus:ring-2 focus:ring-ember/50"
                     />
-                    <Button
+                    <button
                       type="submit"
                       disabled={submitting}
                       className={cn(
-                        "w-full h-12 rounded-full font-heading font-black bg-brand text-white hover:bg-brand-bright transition-all",
+                        button,
+                        "w-full h-12 px-4 py-2 rounded-full font-heading font-black bg-brand text-white hover:bg-brand-bright transition-all",
                         submitting && "opacity-70"
                       )}
                     >
                       {submitting ? "Sending..." : "Send Me the Checklist"}
-                    </Button>
+                    </button>
                     {error && (
                       <p className="text-sm text-brand-bright text-center">{error}</p>
                     )}

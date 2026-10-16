@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { motion, useSpring, useTransform } from "framer-motion";
+import { button, cn } from "@/lib/utils";
 
 const MIN_SALES = 50_000;
 const MAX_SALES = 1_000_000;
@@ -12,19 +12,15 @@ const WEBSITE_COST = 50_000;
 const formatINR = (value: number) =>
   `₹${Math.round(value).toLocaleString("en-IN")}`;
 
-function CountUp({ value, format }: { value: number; format?: (n: number) => string }) {
+function CountUp({ value, format = (n) => `${Math.round(n)}` }: { value: number; format?: (n: number) => string }) {
   const spring = useSpring(value, { stiffness: 120, damping: 22 });
-  const [display, setDisplay] = useState(value);
+  const text = useTransform(spring, format);
 
   useEffect(() => {
     spring.set(value);
   }, [value, spring]);
 
-  useEffect(() => {
-    return spring.on("change", (latest) => setDisplay(latest));
-  }, [spring]);
-
-  return <>{format ? format(display) : Math.round(display)}</>;
+  return <motion.span>{text}</motion.span>;
 }
 
 export const Calculator = () => {
@@ -116,13 +112,12 @@ export const Calculator = () => {
                 style={{ willChange: "transform", backfaceVisibility: "hidden" }}
                 className="pointer-events-none absolute inset-0 h-full w-full rounded-full blur-xl transform-gpu"
               />
-              <Button
-                asChild
-                size="lg"
-                className="relative w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-brand text-white hover:bg-brand-bright transition-all hover:scale-[1.03] active:scale-[0.95] shadow-[0_10px_30px_rgba(193,39,45,0.35)]"
+              <a
+                href="#book"
+                className={cn(button, "relative w-full sm:w-auto h-12 sm:h-14 md:h-16 px-6 sm:px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base md:text-lg bg-brand text-white hover:bg-brand-bright transition-all hover:scale-[1.03] active:scale-[0.95] shadow-[0_10px_30px_rgba(193,39,45,0.35)]")}
               >
-                <a href="#book">Stop Losing Money — Get Your Website</a>
-              </Button>
+                Stop Losing Money — Get Your Website
+              </a>
             </div>
           </div>
         </div>

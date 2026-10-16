@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { button, cn } from "@/lib/utils";
 import { MaskReveal, Reveal } from "@/components/ui/reveal";
 
 export const FinalCta = () => {
@@ -23,15 +23,14 @@ export const FinalCta = () => {
             Book a free 20-min strategy call. We&apos;ll look at your current setup and show you exactly what a commission-free website could do for your restaurant.
           </p>
 
-          <Button
-            asChild
-            size="lg"
-            className="h-14 md:h-16 px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base bg-brand text-white hover:bg-brand-bright transition-all hover:scale-[1.05] active:scale-[0.95] shadow-[0_0_60px_rgba(193,39,45,0.45)] mb-16"
+          <a
+            href="https://calendar.app.google/hcBDBD9ywLA8MRK17"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(button, "h-14 md:h-16 px-8 md:px-12 rounded-full font-heading font-black text-sm sm:text-base bg-brand text-white hover:bg-brand-bright transition-all hover:scale-[1.05] active:scale-[0.95] shadow-[0_0_60px_rgba(193,39,45,0.45)] mb-16")}
           >
-            <a href="https://calendar.app.google/hcBDBD9ywLA8MRK17" target="_blank" rel="noopener noreferrer">
-              Book a Free 20-Min Website Strategy Call
-            </a>
-          </Button>
+            Book a Free 20-Min Website Strategy Call
+          </a>
         </Reveal>
 
         <Reveal delay={0.2} className="w-full rounded-[2rem] border border-cream/10 bg-surface p-2 md:p-3 shadow-[0_40px_120px_rgba(0,0,0,0.6)]">

@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { button, cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "#problem", label: "Problem" },
@@ -49,15 +48,13 @@ export const StickyBar = () => {
           ))}
         </ul>
 
-        <Button
-          asChild
-          size="sm"
-          className="rounded-full px-5 md:px-7 h-10 md:h-11 bg-brand text-white font-heading font-bold tracking-tight hover:bg-brand-bright hover:scale-105 transition-all text-xs md:text-sm"
+        <a
+          href="#book"
+          aria-label="Book a free strategy call"
+          className={cn(button, "rounded-full px-5 md:px-7 h-10 md:h-11 bg-brand text-white font-heading font-bold tracking-tight hover:bg-brand-bright hover:scale-105 transition-all text-xs md:text-sm")}
         >
-          <a href="#book" aria-label="Book a free strategy call">
-            Book a Free Call
-          </a>
-        </Button>
+          Book a Free Call
+        </a>
       </div>
 
       {/* Scroll progress */}

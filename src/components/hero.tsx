@@ -2,13 +2,13 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { button, cn } from "@/lib/utils";
 import { TextRepel } from "@/components/ui/text-repel";
 import { EASE, MaskReveal } from "@/components/ui/reveal";
 
 const MARQUEE = ["Cafés", "Cloud Kitchens", "Bakeries", "Fine Dining", "QSRs", "Bars & Lounges", "Food Trucks", "Dessert Shops"];
 
-export const Hero = ({ ready = true }: { ready?: boolean }) => {
+export const Hero = ({ ready }: { ready: boolean }) => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
@@ -76,13 +76,12 @@ export const Hero = ({ ready = true }: { ready?: boolean }) => {
         </motion.p>
 
         <motion.div {...fadeIn(0.75)} className="mt-10 flex w-full flex-col sm:w-auto sm:flex-row items-center gap-3 sm:gap-4">
-          <Button
-            asChild
-            size="lg"
-            className="w-full sm:w-auto h-14 md:h-16 px-8 md:px-10 rounded-full font-heading font-black text-sm sm:text-base bg-brand text-white hover:bg-brand-bright transition-all hover:scale-[1.04] active:scale-[0.97] shadow-[0_0_60px_rgba(193,39,45,0.45)]"
+          <a
+            href="#book"
+            className={cn(button, "w-full sm:w-auto h-14 md:h-16 px-8 md:px-10 rounded-full font-heading font-black text-sm sm:text-base bg-brand text-white hover:bg-brand-bright transition-all hover:scale-[1.04] active:scale-[0.97] shadow-[0_0_60px_rgba(193,39,45,0.45)]")}
           >
-            <a href="#book">Book a Free 20-Min Strategy Call</a>
-          </Button>
+            Book a Free 20-Min Strategy Call
+          </a>
           <a
             href="#calculator"
             className="group inline-flex h-14 md:h-16 w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-cream/15 px-8 text-sm sm:text-base font-heading font-bold text-cream/80 transition-colors hover:border-cream/40 hover:text-cream"

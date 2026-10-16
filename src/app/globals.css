@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "shadcn/tailwind.css";
-
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -10,37 +7,8 @@
   --font-heading: var(--font-heading);
   --font-logo: var(--font-logo);
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
   --color-border: var(--border);
-  --color-input: var(--input);
   --color-ring: var(--ring);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-sm: calc(var(--radius) * 0.6);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
 
   /* Brand palette — dark & premium */
   --color-ink: #0e0a08;
@@ -54,33 +22,8 @@
 :root {
   --background: #0e0a08;
   --foreground: #f5ece0;
-
-  --card: #1a1411;
-  --card-foreground: #f5ece0;
-
-  --popover: #1a1411;
-  --popover-foreground: #f5ece0;
-
-  --primary: #c1272d;
-  --primary-foreground: #ffffff;
-
-  --secondary: #e8792e;
-  --secondary-foreground: #ffffff;
-
-  --muted: #1a1411;
-  --muted-foreground: #a8998a;
-
-  --accent: #1a1411;
-  --accent-foreground: #f5ece0;
-
-  --destructive: #c1272d;
-  --destructive-foreground: #ffffff;
-
   --border: rgba(245, 236, 224, 0.1);
-  --input: rgba(245, 236, 224, 0.15);
   --ring: #e23a40;
-
-  --radius: 0.75rem;
 }
 
 @layer base {
@@ -155,43 +98,6 @@
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-card/70 backdrop-blur-xl border border-black/5;
-  }
-
-  .text-glow {
-    text-shadow: 0 0 20px rgba(193, 39, 45, 0.2);
-  }
-
-  .aura-glow {
-    background: radial-gradient(circle at center, rgba(232, 121, 46, 0.12) 0%, transparent 70%);
-  }
-
-  .rgb-hover {
-    @apply transition-all duration-500 border border-transparent;
-  }
-
-  .rgb-hover:hover {
-    border-color: transparent;
-    background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(to right, #c1272d, #e8792e);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-  }
-
-  /* --- CRITICAL LCP REVEAL ANIMATION --- */
-  /* This decouples the initial content paint from the JS hydration process */
-  @keyframes lcp-reveal {
-    from {
-      opacity: 0;
-      transform: translate3d(0, 15px, 0);
-    }
-
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
-
   /* Infinite marquee — track holds the content twice, so -50% loops seamlessly */
   @keyframes marquee {
     to {
@@ -201,10 +107,5 @@
 
   .animate-marquee {
     animation: marquee 40s linear infinite;
-  }
-
-  .lcp-element {
-    animation: lcp-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
-    will-change: transform, opacity;
   }
 }

@@ -18,7 +18,7 @@ export const CookieConsentBanner = () => {
     window.localStorage.setItem(COOKIE_CONSENT_KEY, value);
     setShow(false);
     if (value === "accepted") {
-      // Analytics/marketing scripts (GA, Hotjar, Apollo) pick this up via AnalyticsScripts.
+      // Analytics/marketing scripts (GA, Apollo) pick this up via AnalyticsScripts.
       window.dispatchEvent(new Event(COOKIE_CONSENT_EVENT));
     }
   };

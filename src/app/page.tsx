@@ -19,10 +19,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.history.scrollRestoration = "manual";
-      window.scrollTo(0, 0);
-    }
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {

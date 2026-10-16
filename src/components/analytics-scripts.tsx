@@ -32,22 +32,6 @@ export const AnalyticsScripts = () => {
         `}
       </Script>
 
-      {/* Hotjar */}
-      <Script id="hotjar" strategy="lazyOnload">
-        {`
-          (function(h,o,t,j,a,r){
-              if(h._hjSettings && h._hjSettings.hjid === 0) return;
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:0,hjsv:6};
-              if(h._hjSettings.hjid === 0) return;
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        `}
-      </Script>
-
       {/* Apollo Tracking Script */}
       <Script id="apollo-tracker" strategy="afterInteractive">
         {`

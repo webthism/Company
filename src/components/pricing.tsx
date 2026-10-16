@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { button, cn } from "@/lib/utils";
 import { Eyebrow, MaskReveal, Reveal } from "@/components/ui/reveal";
 
 const VISIBLE_FEATURES = 4;
@@ -130,16 +129,16 @@ function TierCard({ tier }: { tier: (typeof TIERS)[number] }) {
         {expanded ? "Show less" : `+ ${extra.length} more included`}
       </button>
 
-      <Button
-        asChild
-        size="lg"
+      <a
+        href="#book"
         className={cn(
-          "relative mt-auto w-full h-12 rounded-full font-heading font-black transition-all hover:scale-[1.03] active:scale-[0.97]",
+          button,
+          "relative mt-auto w-full h-12 px-8 rounded-full font-heading font-black transition-all hover:scale-[1.03] active:scale-[0.97]",
           tier.highlight ? "bg-brand text-white hover:bg-brand-bright" : "bg-cream text-ink hover:bg-white"
         )}
       >
-        <a href="#book">Get Started</a>
-      </Button>
+        Get Started
+      </a>
     </div>
   );
 }
